@@ -327,3 +327,4 @@ C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\Employee
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\EmployeeHistoryApplication.csproj.AssemblyReference.cache
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\Employee.73E58546.Up2Date
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\EmployeeHistoryApplication.sourcelink.json
