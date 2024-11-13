@@ -79,8 +79,6 @@ C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\Employee
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\apbubjopm2-muycvpuwrr.gz
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\0ae3m8ysld-87fc7y1x7t.gz
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\lewe5zaj8r-mlv21k5csn.gz
-C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\9qoq5gflgz-qjfj9zi7df.gz
-C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\qml02df6jq-qjfj9zi7df.gz
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -328,3 +326,5 @@ C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\Employee
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\Employee.73E58546.Up2Date
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\EmployeeHistoryApplication.sourcelink.json
+C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\9qoq5gflgz-w3auywr9sa.gz
+C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\obj\Debug\net9.0\compressed\qml02df6jq-w3auywr9sa.gz

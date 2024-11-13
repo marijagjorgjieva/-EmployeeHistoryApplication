@@ -3,174 +3,13 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "EmployeeHistoryApplication.qjfj9zi7df.styles.css",
-      "AssetFile": "EmployeeHistoryApplication.styles.css.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001808318264"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "552"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "qjfj9zi7df"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0="
-        },
-        {
-          "Name": "label",
-          "Value": "EmployeeHistoryApplication.styles.css"
-        }
-      ]
-    },
-    {
-      "Route": "EmployeeHistoryApplication.qjfj9zi7df.styles.css",
-      "AssetFile": "EmployeeHistoryApplication.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1144"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "qjfj9zi7df"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0="
-        },
-        {
-          "Name": "label",
-          "Value": "EmployeeHistoryApplication.styles.css"
-        }
-      ]
-    },
-    {
-      "Route": "EmployeeHistoryApplication.qjfj9zi7df.styles.css.gz",
-      "AssetFile": "EmployeeHistoryApplication.styles.css.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "552"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "qjfj9zi7df"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4="
-        },
-        {
-          "Name": "label",
-          "Value": "EmployeeHistoryApplication.styles.css.gz"
-        }
-      ]
-    },
-    {
       "Route": "EmployeeHistoryApplication.styles.css",
       "AssetFile": "EmployeeHistoryApplication.styles.css.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001808318264"
+          "Quality": "0.002267573696"
         }
       ],
       "ResponseHeaders": [
@@ -188,7 +27,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "552"
+          "Value": "440"
         },
         {
           "Name": "Content-Type",
@@ -196,15 +35,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4=\""
+          "Value": "\"98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0=\""
+          "Value": "W/\"VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
         },
         {
           "Name": "Vary",
@@ -214,7 +53,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0="
+          "Value": "sha256-VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ="
         }
       ]
     },
@@ -233,7 +72,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1144"
+          "Value": "952"
         },
         {
           "Name": "Content-Type",
@@ -241,17 +80,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0=\""
+          "Value": "\"VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dsqUk9/VWNpV5jd3Bc4aPtTbPcdx50N6KaXIvkyUaS0="
+          "Value": "sha256-VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ="
         }
       ]
     },
@@ -274,7 +113,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "552"
+          "Value": "440"
         },
         {
           "Name": "Content-Type",
@@ -282,11 +121,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4=\""
+          "Value": "\"98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 12 Nov 2024 13:08:07 GMT"
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
         },
         {
           "Name": "Vary",
@@ -296,7 +135,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-puNXOSaWnni8XN9jz61p3Mk7QCfaBdoFb8YGofnz1V4="
+          "Value": "sha256-98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU="
+        }
+      ]
+    },
+    {
+      "Route": "EmployeeHistoryApplication.w3auywr9sa.styles.css",
+      "AssetFile": "EmployeeHistoryApplication.styles.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002267573696"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "440"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w3auywr9sa"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ="
+        },
+        {
+          "Name": "label",
+          "Value": "EmployeeHistoryApplication.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "EmployeeHistoryApplication.w3auywr9sa.styles.css",
+      "AssetFile": "EmployeeHistoryApplication.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "952"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w3auywr9sa"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VJ/DOtC1lZOKlrv0vME+vsKK66dfzd/HprLrekyNIuQ="
+        },
+        {
+          "Name": "label",
+          "Value": "EmployeeHistoryApplication.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "EmployeeHistoryApplication.w3auywr9sa.styles.css.gz",
+      "AssetFile": "EmployeeHistoryApplication.styles.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "440"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 12 Nov 2024 15:42:46 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w3auywr9sa"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-98NPtqiqlm2LrS+OdUJ6f6gG8QjHZsrtH/sDkJmtqEU="
+        },
+        {
+          "Name": "label",
+          "Value": "EmployeeHistoryApplication.styles.css.gz"
         }
       ]
     },

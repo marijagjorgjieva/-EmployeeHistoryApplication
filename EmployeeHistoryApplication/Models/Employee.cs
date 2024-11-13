@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Extensions.Hosting;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeHistoryApplication.Models
 {
@@ -9,6 +10,8 @@ namespace EmployeeHistoryApplication.Models
         public string? Surname { get; set; }
         public string? Adress { get; set; }
         public string? EMBG { get; set; }
+
+        public ICollection<JobHistory> jobs { get; } = new List<JobHistory>();
 
     }
 }

@@ -33,6 +33,7 @@ namespace EmployeeHistoryApplication.Controllers
                 return NotFound();
             }
 
+            //go fetchnuvame toj vraboten po id
             var employee = await _context.Employee
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
@@ -50,8 +51,6 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
         // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,Adress,EMBG")] Employee employee)
@@ -65,7 +64,7 @@ namespace EmployeeHistoryApplication.Controllers
             return View(employee);
         }
 
-        // GET: Employees/Edit/5
+        // za da se gettne Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,9 +80,7 @@ namespace EmployeeHistoryApplication.Controllers
             return View(employee);
         }
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // post metod na editnuvajne 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Adress,EMBG")] Employee employee)
@@ -111,12 +108,11 @@ namespace EmployeeHistoryApplication.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); //vrakja pak na listata na employes
             }
-            return View(employee);
+            return View(employee); 
         }
 
-        // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +130,7 @@ namespace EmployeeHistoryApplication.Controllers
             return View(employee);
         }
 
-        // POST: Employees/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
