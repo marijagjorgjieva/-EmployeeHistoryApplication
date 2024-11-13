@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -51,22 +52,23 @@ namespace EmployeeHistoryApplication.Controllers
             Employee employee = await _context.Employee.FindAsync(id);
             if (employee == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
             ViewData["EmployeeId"] = id;
-            ViewData["EmployeeName"] =employee.Name;
+            ViewData["EmployeeName"] = employee.Name;
             ViewData["EmployeeSurname"] = employee.Surname;
 
             return View();
         }
 
         // POST: JobHistories/Create
-     
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
         {
             jobHistory.Employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
+
             if (jobHistory.Employee == null)
             {
                 ModelState.AddModelError("EmployeeId", "Invalid Employee ID");
@@ -75,10 +77,18 @@ namespace EmployeeHistoryApplication.Controllers
             }
             else
             {
-
-                _context.Add(jobHistory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+              /*  //pred da se addne da se proverat datumite
+                if (ModelState.IsValid)
+                {*/
+                    _context.Add(jobHistory);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+              /*  }
+                else
+                {
+                    ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
+                    return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+                }*/
             }
 
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
@@ -120,10 +130,25 @@ namespace EmployeeHistoryApplication.Controllers
             }
             else
             {
-
-                _context.Update(jobHistory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+                var existingJobHistories = _context.JobHistory.Where(j => j.EmployeeId == jobHistory.EmployeeId && j.Id != jobHistory.Id)
+       .ToList();
+                if (!JobHistory.IsDateRangeValid(existingJobHistories, jobHistory.dateFrom, jobHistory.dateTo))
+                {
+                    ModelState.AddModelError("", "The date range overlaps with an existing job history.");
+                    return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+                }
+                //pred da se update da se provere datumot  
+                if (ModelState.IsValid)
+                {
+                    _context.Update(jobHistory);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
+                }
+                else
+                {
+                    ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
+                    return View(jobHistory);
+                }
             }
 
 
@@ -170,3 +195,5 @@ namespace EmployeeHistoryApplication.Controllers
         }
     }
 }
+
+

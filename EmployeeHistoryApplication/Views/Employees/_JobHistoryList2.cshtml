@@ -18,8 +18,8 @@
             <tr>
                 <td>@job.CompanyName</td>
                 <td>@job.JobPostition</td>
-                <td>@job.dateFrom.ToShortDateString()</td>
-                <td>@job.dateTo.ToShortDateString()</td>
+                <td>@job.dateFrom.ToString("dd/MM/yyyy")</td>
+                <td>@job.dateTo.ToString("dd/MM/yyyy")</td>
                 <td>
                     <form asp-controller="JobHistories" asp-action="Edit" asp-route-id="@job.Id" method="get">
                         <button type="submit" value="Edit" class="btn btn-primary">Edit</button>

@@ -17,7 +17,7 @@
                 <td>@job.CompanyName</td>
                 <td>@job.JobPostition</td>
                 <td>@job.dateFrom.ToShortDateString()</td>
-                <td>@job.dateTo.ToShortDateString()</td>
+                <td asp-format="{0:dd/MM/yyyy}">@job.dateTo.ToShortDateString()</td>
             </tr>
         }
     </tbody>
