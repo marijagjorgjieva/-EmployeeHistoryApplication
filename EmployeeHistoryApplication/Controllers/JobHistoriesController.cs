@@ -48,33 +48,18 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: JobHistories/Create
         public IActionResult Create()
         {
-            // ovde se prenesuvaat employidsot
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id");
             return View();
         }
 
         // POST: JobHistories/Create
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EmployeeId,CompanyName,JobPostition")] JobHistory jobHistory)
-        {
-            Employee employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
-            jobHistory.Employee = employee;
-            if (ModelState.IsValid)
-            {
-                _context.Add(jobHistory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
-            return View(jobHistory);
-        }*/
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EmployeeId,CompanyName,JobPostition")] JobHistory jobHistory)
+        public async Task<IActionResult> Create([Bind("Id,EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
         {
-            
-                jobHistory.Employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
+            jobHistory.Employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
             if (jobHistory.Employee == null)
             {
                 ModelState.AddModelError("EmployeeId", "Invalid Employee ID");
@@ -88,12 +73,10 @@ namespace EmployeeHistoryApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            
+
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
             return View(jobHistory);
         }
-    
-
 
         // GET: JobHistories/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -117,33 +100,28 @@ namespace EmployeeHistoryApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,CompanyName,JobPostition")] JobHistory jobHistory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
         {
             if (id != jobHistory.Id)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            jobHistory.Employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
+            if (jobHistory.Employee == null)
             {
-                try
-                {
-                    _context.Update(jobHistory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JobHistoryExists(jobHistory.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                ModelState.AddModelError("EmployeeId", "Invalid Employee ID");
+                ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
+                return View(jobHistory);
+            }
+            else
+            {
+
+                _context.Update(jobHistory);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+      
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
             return View(jobHistory);
         }

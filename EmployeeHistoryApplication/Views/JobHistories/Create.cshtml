@@ -27,6 +27,16 @@
                 <span asp-validation-for="JobPostition" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="dateFrom" class="control-label"></label>
+                <input asp-for="dateFrom" class="form-control" />
+                <span asp-validation-for="dateFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateTo" class="control-label"></label>
+                <input asp-for="dateTo" class="form-control" />
+                <span asp-validation-for="dateTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

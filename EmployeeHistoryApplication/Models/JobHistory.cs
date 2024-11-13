@@ -7,7 +7,9 @@
         public required Employee Employee { get; set; } = null!;
         public required string CompanyName { get; set; }
         public required string JobPostition { get; set; }
-
+        public required DateTime dateFrom { get; set; }
+        public required DateTime dateTo { get; set; }
 
     }
 }
+    
