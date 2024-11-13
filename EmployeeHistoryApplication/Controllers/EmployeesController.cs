@@ -22,7 +22,7 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            return View(await _context.Employee.ToListAsync()); //prikaz na site employees
         }
 
         // GET: Employees/Details/5
@@ -34,8 +34,8 @@ namespace EmployeeHistoryApplication.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.jobs)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(e => e.jobs) //treba da se zemat i jobs
+                .FirstOrDefaultAsync(m => m.Id == id); // se izbira idto
             if (employee == null)
             {
                 return NotFound();
@@ -47,12 +47,9 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
-            return View();
+            return View(); // otvora create view
         }
 
-        // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,Adress,EMBG")] Employee employee)
@@ -74,7 +71,10 @@ namespace EmployeeHistoryApplication.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await _context.Employee
+                           .Include(e => e.jobs) //treba da se zemat i jobs
+                           .FirstOrDefaultAsync(m => m.Id == id);
+
             if (employee == null)
             {
                 return NotFound();
@@ -82,9 +82,6 @@ namespace EmployeeHistoryApplication.Controllers
             return View(employee);
         }
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Adress,EMBG")] Employee employee)

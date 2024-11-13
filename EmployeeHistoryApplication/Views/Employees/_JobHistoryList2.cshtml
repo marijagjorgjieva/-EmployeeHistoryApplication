@@ -18,7 +18,18 @@
                 <td>@job.JobPostition</td>
                 <td>@job.dateFrom.ToShortDateString()</td>
                 <td>@job.dateTo.ToShortDateString()</td>
+                <td>
+                    <form asp-controller="JobHistories" asp-action="Delete" asp-route-id="@job.Id" method="post">
+                        <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-controller="JobHistories" asp-action="Delete" asp-route-id="@job.Id">Delete</a>
+                </td>
             </tr>
+
+      
+
         }
     </tbody>
 </table>

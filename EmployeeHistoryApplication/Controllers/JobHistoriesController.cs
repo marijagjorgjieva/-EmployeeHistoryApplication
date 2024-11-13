@@ -53,8 +53,7 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
         // POST: JobHistories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
@@ -96,8 +95,6 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
         // POST: JobHistories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
@@ -147,7 +144,6 @@ namespace EmployeeHistoryApplication.Controllers
 
         // POST: JobHistories/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var jobHistory = await _context.JobHistory.FindAsync(id);
@@ -157,7 +153,7 @@ namespace EmployeeHistoryApplication.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Employees", new { id = jobHistory.EmployeeId });
         }
 
         private bool JobHistoryExists(int id)

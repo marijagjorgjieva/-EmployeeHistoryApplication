@@ -37,11 +37,12 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
-        <a asp-action="Create" asp-controller="JobHistory" asp-route-employeeId="@Model.Id" class="btn btn-primary">Add Job History</a>
-
+        
     </div>
 </div>
-
+<div>
+    @Html.Partial("_JobHistoryList2", Model.jobs)
+</div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
