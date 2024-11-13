@@ -46,9 +46,17 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
         // GET: JobHistories/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int id)
         {
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id");
+            Employee employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound(); 
+            }
+            ViewData["EmployeeId"] = id;
+            ViewData["EmployeeName"] =employee.Name;
+            ViewData["EmployeeSurname"] = employee.Surname;
+
             return View();
         }
 
@@ -56,25 +64,25 @@ namespace EmployeeHistoryApplication.Controllers
      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
+        public async Task<IActionResult> Create([Bind("EmployeeId,CompanyName,JobPostition,dateFrom,dateTo")] JobHistory jobHistory)
         {
             jobHistory.Employee = await _context.Employee.FindAsync(jobHistory.EmployeeId);
             if (jobHistory.Employee == null)
             {
                 ModelState.AddModelError("EmployeeId", "Invalid Employee ID");
                 ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
-                return View(jobHistory);
+                return RedirectToAction("Index", "Employees");
             }
             else
             {
 
                 _context.Add(jobHistory);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
             }
 
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
-            return View(jobHistory);
+            return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
         }
 
         // GET: JobHistories/Edit/5

@@ -10,7 +10,7 @@ namespace EmployeeHistoryApplication.Data
 {
     public class EmployeeHistoryApplicationContext : DbContext
     {
-        public EmployeeHistoryApplicationContext (DbContextOptions<EmployeeHistoryApplicationContext> options)
+        public EmployeeHistoryApplicationContext(DbContextOptions<EmployeeHistoryApplicationContext> options)
             : base(options)
         {
         }
@@ -22,7 +22,10 @@ namespace EmployeeHistoryApplication.Data
                 .WithOne(e => e.Employee)
                 .HasForeignKey(e => e.EmployeeId)
                 .IsRequired();
+
+            modelBuilder.Entity<JobHistory>().Property(j => j.Id).ValueGeneratedOnAdd();
         }
+
         public DbSet<EmployeeHistoryApplication.Models.Employee> Employee { get; set; } = default!;
         public DbSet<EmployeeHistoryApplication.Models.JobHistory> JobHistory { get; set; } = default!;
     }
