@@ -121,7 +121,7 @@ namespace EmployeeHistoryApplication.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-      
+
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
             return View(jobHistory);
         }

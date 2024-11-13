@@ -34,6 +34,7 @@ namespace EmployeeHistoryApplication.Controllers
             }
 
             var employee = await _context.Employee
+                .Include(e => e.jobs)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
