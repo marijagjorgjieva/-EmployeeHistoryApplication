@@ -3,6 +3,7 @@ using EmployeeHistoryApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeHistoryApplication.Migrations
 {
     [DbContext(typeof(EmployeeHistoryApplicationContext))]
-    partial class EmployeeHistoryApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20241113093628_ChangesInHobHistory4")]
+    partial class ChangesInHobHistory4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

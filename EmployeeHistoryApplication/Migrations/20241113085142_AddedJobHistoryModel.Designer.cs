@@ -3,6 +3,7 @@ using EmployeeHistoryApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeHistoryApplication.Migrations
 {
     [DbContext(typeof(EmployeeHistoryApplicationContext))]
-    partial class EmployeeHistoryApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20241113085142_AddedJobHistoryModel")]
+    partial class AddedJobHistoryModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,16 +57,11 @@ namespace EmployeeHistoryApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<string>("JobPostition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -76,9 +74,7 @@ namespace EmployeeHistoryApplication.Migrations
                 {
                     b.HasOne("EmployeeHistoryApplication.Models.Employee", "Employee")
                         .WithMany("jobs")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Employee");
                 });

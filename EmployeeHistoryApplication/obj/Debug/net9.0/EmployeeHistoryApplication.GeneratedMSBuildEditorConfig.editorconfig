@@ -56,6 +56,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

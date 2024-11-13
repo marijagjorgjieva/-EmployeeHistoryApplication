@@ -2,8 +2,12 @@
 {
     public class JobHistory
     {
-        public int Id { get; set; }
-        public int? BlogId { get; set; } //opcionalen foreign key stavam oti sho ako ne rabotel do sea nigde
-        public Employee? Employee { get; set; }
+        public int Id { get; set; } 
+        public required int EmployeeId { get; set; }
+        public required Employee Employee { get; set; } = null!;
+        public required string CompanyName { get; set; }
+        public required string JobPostition { get; set; }
+
+
     }
 }
