@@ -108,14 +108,14 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 ModelState.AddModelError("EmployeeId", "Invalid Employee ID");
                 ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", jobHistory.EmployeeId);
-                return View(jobHistory);
+                return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
             }
             else
             {
 
                 _context.Update(jobHistory);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
             }
 
 
@@ -153,7 +153,7 @@ namespace EmployeeHistoryApplication.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Employees", new { id = jobHistory.EmployeeId });
+            return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
         }
 
         private bool JobHistoryExists(int id)
