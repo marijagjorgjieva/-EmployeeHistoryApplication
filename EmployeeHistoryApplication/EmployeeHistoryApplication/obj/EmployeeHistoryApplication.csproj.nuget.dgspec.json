@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj": {}
+    "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj": {
+    "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
+        "projectUniqueName": "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
         "projectName": "EmployeeHistoryApplication",
-        "projectPath": "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
+        "projectPath": "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
         "packagesPath": "C:\\Users\\marija.gjorgjieva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\obj\\",
+        "outputPath": "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

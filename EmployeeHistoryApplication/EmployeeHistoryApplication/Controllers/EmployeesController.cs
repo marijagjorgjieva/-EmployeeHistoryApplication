@@ -20,13 +20,20 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Employee.ToListAsync()); //prikaz na site employees
-        }
-        
+            var employees = await _context.Employee.ToListAsync();
 
-        //Ovde da se izvrsi sortiranje po date to desc
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                               || s.Surname.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            ViewData["SearchString"] = searchString;
+            return View(employees);
+        }
+
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,7 +51,6 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 return NotFound();
             }
-            employee.jobs.OrderByDescending(j => j.dateFrom).ToList();
             return View(employee);
         }
 

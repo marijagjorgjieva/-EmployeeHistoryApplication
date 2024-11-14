@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "akEPfdg0wvQ=",
+  "dgSpecHash": "xBBDlKkSw+E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\marija.gjorgjieva\\Desktop\\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
+  "projectFilePath": "C:\\Users\\marija.gjorgjieva\\Documents\\task_03\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication\\EmployeeHistoryApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marija.gjorgjieva\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\marija.gjorgjieva\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

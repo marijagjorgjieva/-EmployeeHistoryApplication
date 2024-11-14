@@ -17,89 +17,89 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EmployeeHistoryApplication
 build_property.RootNamespace = EmployeeHistoryApplication
-build_property.ProjectDir = C:\Users\marija.gjorgjieva\Desktop\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\EmployeeHistoryApplication\
+build_property.ProjectDir = C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\EmployeeHistoryApplication\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\marija.gjorgjieva\Desktop\EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147\EmployeeHistoryApplication
+build_property.MSBuildProjectDirectory = C:\Users\marija.gjorgjieva\Documents\task_03\EmployeeHistoryApplication\EmployeeHistoryApplication\EmployeeHistoryApplication
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/Create.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/Delete.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/Details.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/Edit.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/Index.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/_JobHistoryList.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/_JobHistoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXF9Kb2JIaXN0b3J5TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Employees/_JobHistoryList2.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Employees/_JobHistoryList2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXF9Kb2JIaXN0b3J5TGlzdDIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Home/Index.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Home/Privacy.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/JobHistories/Create.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/JobHistories/Delete.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/JobHistories/Details.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/JobHistories/Edit.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/JobHistories/Index.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/JobHistories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iSGlzdG9yaWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Shared/Error.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/_ViewImports.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/_ViewStart.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/marija.gjorgjieva/Desktop/EmployeeHistoryApplication-86712067cf5383f1fc29fe6e29753656f6b5f147/EmployeeHistoryApplication/Views/Shared/_Layout.cshtml]
+[C:/Users/marija.gjorgjieva/Documents/task_03/EmployeeHistoryApplication/EmployeeHistoryApplication/EmployeeHistoryApplication/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8xfsezpu6t

@@ -8,6 +8,17 @@
 
 <a asp-action="Create">Create New</a>
 </p>
+<form method="get" asp-action="Index">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by name or surname" value="@ViewBag.SearchString" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    @if (!string.IsNullOrEmpty(@ViewBag.SearchString))
+    {
+        <a href="@Url.Action("Index", new { searchString = string.Empty })" class="btn btn-secondary">Remove Filter</a>
+    }
+</form>
+
 <table class="table">
     <thead>
         <tr>
