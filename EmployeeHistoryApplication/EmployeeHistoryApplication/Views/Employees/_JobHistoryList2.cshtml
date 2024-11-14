@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EmployeeHistoryApplication.Models.JobHistory>
+
+<h4>Job History</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Job Position</th>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var sortedModel = Model.ToList();
+            sortedModel.Sort(new JobHistoryDateComparerDescending());
+        }
+        @foreach (var job in sortedModel) // Sort the collection here
+        {
+            <tr>
+                <td>@job.CompanyName</td>
+                <td>@job.JobPostition</td>
+                <td>@job.dateFrom.ToShortDateString()</td>
+                <td>@job.dateTo?.ToShortDateString()</td>
+                <td>
+                    <form asp-controller="JobHistories" asp-action="Edit" asp-route-id="@job.Id" method="get">
+                        <button type="submit" value="Edit" class="btn btn-primary">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="JobHistories" asp-action="Delete" asp-route-id="@job.Id" method="get">
+                        <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
