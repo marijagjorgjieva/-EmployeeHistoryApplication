@@ -6,8 +6,7 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -28,27 +27,69 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EMBG)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMBG)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Delete employee</h4>
+                                </div>
+                                <div class="modal-body" style="text-align: center;">
+                                    <p>Are you sure you want to delete employee</p>
+                                    <h5>@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Surname)</h5>
+                                    <br />
+                                    <p>With all records history?</p>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <p style="color: red; font-weight: bold;" bold>Slide to confirm:</p>
+                                    <input type="range" id="confirmSlider" min="0" max="100" value="0" oninput="checkSlider()">
 
-            </td>
-        </tr>
-}
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id">
+                                        <input type="hidden" asp-for="@item.Id" />
+                                        <input type="submit" value="Delete" class="btn btn-danger" id="deleteButton" disabled />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<script>
+    function checkSlider() {
+        var slider = document.getElementById("confirmSlider");
+        var deleteButton = document.getElementById("deleteButton");
+        if (slider.value == 100) {
+            deleteButton.disabled = false;
+        } else {
+            deleteButton.disabled = true;
+        }
+    }
+</script>
