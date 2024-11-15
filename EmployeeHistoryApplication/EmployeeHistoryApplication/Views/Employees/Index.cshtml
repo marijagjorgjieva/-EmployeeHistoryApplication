@@ -21,7 +21,7 @@
 </p>
 <form method="get" asp-action="Index">
     <div class="form-group">
-        <input type="text" name="searchString" class="form-control" placeholder="Search by name or surname" value="@ViewBag.SearchString" />
+        <input type="text" name="searchString" class="form-control" placeholder="Search by name or surname" value="@ViewData["SearchString"]" />
     </div>
     <button type="submit" class="btn btn-primary">Search</button>
     @if (!string.IsNullOrEmpty(@ViewBag.SearchString))
@@ -52,18 +52,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Adress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EMBG)
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                <td>@Html.DisplayFor(modelItem => item.Adress)</td>
+                <td>@Html.DisplayFor(modelItem => item.EMBG)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -73,6 +65,35 @@
         }
     </tbody>
 </table>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+    @if (ViewData["CurrentPage"] is int currentPage && ViewData["TotalPages"] is int totalPages)
+    {
+        <ul class="pagination">
+            @if (currentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, searchString = ViewData["SearchString"] })">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, searchString = ViewData["SearchString"] })">@i</a>
+                </li>
+            }
+
+            @if (currentPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, searchString = ViewData["SearchString"] })">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
 
 <!-- Modal Template -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

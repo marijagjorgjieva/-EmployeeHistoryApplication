@@ -20,22 +20,36 @@ namespace EmployeeHistoryApplication.Controllers
             _context = context;
         }
 
+
         // GET: Employees
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, int page = 1)
         {
-            var employees = await _context.Employee.ToListAsync();
+            int pageSize = 2; 
+            var employeesQuery = _context.Employee.AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                employees = employees.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                                               || s.Surname.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+                employeesQuery = employeesQuery.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                                       || s.Surname.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
 
-             ViewData["SearchString"] = searchString;
+            int totalEmployees = await employeesQuery.CountAsync();
+
+            var employees = await employeesQuery
+                .Skip((page - 1) * pageSize) 
+                .Take(pageSize)
+                .ToListAsync();
+
+            var totalPages = (int)Math.Ceiling((double)totalEmployees / pageSize);
+
+            ViewData["SearchString"] = searchString;
+            ViewData["CurrentPage"] = page;
+            ViewData["TotalPages"] = totalPages;
+
             return View(employees);
         }
 
-        //ovde da se sortira po daden parametar
+
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id, string sortOrder)
         {
