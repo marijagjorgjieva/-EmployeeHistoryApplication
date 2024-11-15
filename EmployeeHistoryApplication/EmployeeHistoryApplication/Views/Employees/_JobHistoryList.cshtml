@@ -12,10 +12,32 @@
     </thead>
     <tbody>
         @{
-            var sortedModel = Model.ToList();
-            sortedModel.Sort(new JobHistoryDateComparerDescending());
+            var sortedModel = Model;
+
+            var sortOrder = ViewData["SortOrder"]?.ToString();
+
+            switch (sortOrder)
+            {
+                case "dateFrom_desc":
+                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo_desc":
+                    sortedModel = sortedModel.OrderByDescending(j => j.dateTo).ToList();
+                    break;
+                case "dateFrom":
+                    sortedModel = sortedModel.OrderBy(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo":
+                    sortedModel = sortedModel.OrderBy(j => j.dateTo).ToList();
+                    break;
+                default:
+                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+            }
+
         }
-        @foreach (var job in sortedModel) //iteracija niz site i prikazuvanje vo tabela
+
+        @foreach (var job in sortedModel) // Loop through the sorted list
         {
             <tr>
                 <td>@job.CompanyName</td>
@@ -24,7 +46,7 @@
                 <td>
                     @if (job.dateTo == null)
                     {
-                        <span style="font-weight: bold; font-style: italic; color: green;">  - at moment</span>
+                        <span style="font-weight: bold; font-style: italic; color: green;"> - at moment</span>
                     }
                     else
                     {

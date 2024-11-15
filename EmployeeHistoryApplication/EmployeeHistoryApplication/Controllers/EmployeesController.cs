@@ -34,25 +34,54 @@ namespace EmployeeHistoryApplication.Controllers
             return View(employees);
         }
 
+        //ovde da se sortira po daden parametar
         // GET: Employees/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string sortOrder)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
+            // Retrieve the employee with jobs
             var employee = await _context.Employee
-                .Include(e => e.jobs) //treba da se zemat i jobs
-                .FirstOrDefaultAsync(m => m.Id == id); // se izbira idto
+                .Include(e => e.jobs) // Ensure jobs are included in the result
+                .FirstOrDefaultAsync(e => e.Id == id);
 
-            
             if (employee == null)
             {
                 return NotFound();
             }
+
+            // Sort jobs based on the selected sort order
+            ViewData["SortOrder"] = sortOrder;
+            switch (sortOrder)
+            {
+                case "dateFrom_desc":
+                    employee.jobs.ToList().Sort(new JobHistoryDateComparerDescending());
+                    break;
+                case "dateTo_desc":
+                     employee.jobs.OrderByDescending(j => j.dateTo).ToList();
+                    break;
+                case "dateFrom":
+                     employee.jobs.OrderBy(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo":
+                    employee.jobs.OrderBy(j => j.dateTo).ToList();
+                    break;
+                default:
+                    // Default sorting, maybe by job title or by start date
+                    employee.jobs.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+                    
+            }
+
+            // Pass the employee model (including sorted jobs) to the view
             return View(employee);
         }
+
+
+
 
         // GET: Employees/Create
         public IActionResult Create()
@@ -75,6 +104,7 @@ namespace EmployeeHistoryApplication.Controllers
 
         // GET: Employees/Edit/5
         //Ovde da se izvrsi sortiranje po date to desc
+        //ovde da se sortira po daden parametar
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

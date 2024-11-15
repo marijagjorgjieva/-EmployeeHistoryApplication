@@ -36,7 +36,15 @@
         </dd>
     </dl>
 </div>
-<div>
+<<div>
+    <h4>Job History</h4>
+    <div>
+        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateFrom">Sort by Date From Ascending</a> |
+        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateFrom_desc">Sort by Date From Descending</a> |
+        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateTo">Sort by Date To Ascending</a> |
+        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateTo_desc">Sort by Date To Descending</a>
+    </div>
+
     @Html.Partial("_JobHistoryList", Model.jobs)
 </div>
 <div>
