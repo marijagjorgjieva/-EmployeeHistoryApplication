@@ -22,11 +22,11 @@ namespace EmployeeHistoryApplication.Models
             
             foreach (var job in jobHistories)
             {
-                if ((job.dateTo!=null&&newDateFrom < job.dateTo && newDateTo > job.dateFrom))
+                if ((job.dateTo!=null&&newDateFrom <= job.dateTo && newDateTo >= job.dateFrom))
                 {
                     return false;
                 }
-                else if ((job.dateTo == null && newDateFrom < DateTime.Now && newDateTo > job.dateFrom))
+                else if ((job.dateTo == null && newDateFrom <= DateTime.Now && newDateTo >= job.dateFrom))
                 {
                     return false;
                 }
@@ -34,7 +34,41 @@ namespace EmployeeHistoryApplication.Models
             return true;
         }
 
-     
+        public static bool IsDateRangeValidForNullDateTo(List<JobHistory> jobHistories, DateTime newDateFrom, DateTime? newDateTo)
+        {
+
+            foreach (var job in jobHistories)
+            {
+                if (job.dateTo>=newDateFrom)
+                {
+                    return false;
+                }
+           
+            }
+            return true;
+        }
+        public static bool IsThereACurrentDateNull(List<JobHistory> jobHistories)
+        {
+
+            foreach (var job in jobHistories)
+            {
+              if (job.dateTo==null)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        public static bool IsAfterCurrentDate(DateTime newDateFrom)
+        {
+
+           if (newDateFrom>DateTime.UtcNow)
+                return false;
+            return true;
+        }
+
+
     }
 }
 

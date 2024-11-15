@@ -30,7 +30,7 @@ namespace EmployeeHistoryApplication.Controllers
                                                || s.Surname.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
-            ViewData["SearchString"] = searchString;
+             ViewData["SearchString"] = searchString;
             return View(employees);
         }
 

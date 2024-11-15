@@ -37,7 +37,7 @@ namespace EmployeeHistoryApplication.Controllers
             }
 
             var jobHistory = await _context.JobHistory
-                .Include(j => j.Employee).OrderByDescending(j=>j.dateFrom)
+                .Include(j => j.Employee).OrderByDescending(j => j.dateFrom)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (jobHistory == null)
             {
@@ -78,25 +78,49 @@ namespace EmployeeHistoryApplication.Controllers
             else
             {
                 DateTime? dateToToCompare = null;
-                if (jobHistory.dateTo==null)
+                if (!JobHistory.IsAfterCurrentDate(jobHistory.dateFrom))
                 {
-                    dateToToCompare = DateTime.Now;
-                }
-                else
-                {
-                    dateToToCompare= jobHistory.dateTo;
-                }
-                var existingJobHistories = _context.JobHistory.Where(j => j.EmployeeId == jobHistory.EmployeeId && j.Id != jobHistory.Id)
-                    .ToList();
-                if (!JobHistory.IsDateRangeValid(existingJobHistories, jobHistory.dateFrom, dateToToCompare))
-                {
-                    ModelState.AddModelError("dateTo", "\"The date range overlaps with an existing job history.");
+                    ModelState.AddModelError("dateTo", "The starting date must not be after todays's date");
                     ViewData["EmployeeId"] = jobHistory.EmployeeId;
                     ViewData["EmployeeName"] = jobHistory.Employee.Name;
                     ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
                     return View(jobHistory);
                 }
-                else if (jobHistory.dateTo!=null&&jobHistory.dateFrom >= jobHistory.dateTo)
+                if (jobHistory.dateTo == null)
+                {
+                    dateToToCompare = DateTime.Now;
+                }
+                else
+                {
+                    dateToToCompare = jobHistory.dateTo;
+                }
+                var existingJobHistories = _context.JobHistory.Where(j => j.EmployeeId == jobHistory.EmployeeId && j.Id != jobHistory.Id)
+                    .ToList();
+                if (jobHistory.dateTo == null & !JobHistory.IsThereACurrentDateNull(existingJobHistories))
+                {
+                    ModelState.AddModelError("dateTo", "There is already a current job. Edit that one, then add a new current job");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
+                if (jobHistory.dateTo == null & !JobHistory.IsDateRangeValidForNullDateTo(existingJobHistories, jobHistory.dateFrom, dateToToCompare))
+                {
+                    ModelState.AddModelError("dateFor", "This is not the earliest job");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
+                else if (!JobHistory.IsDateRangeValid(existingJobHistories, jobHistory.dateFrom, dateToToCompare))
+                {
+                    ModelState.AddModelError("dateTo", "The date range overlaps with an existing job history.");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
+                else if (jobHistory.dateTo != null && jobHistory.dateFrom >= jobHistory.dateTo)
                 {
                     ModelState.AddModelError("dateTo", "The start date must be before the end date.");
                     ViewData["EmployeeId"] = jobHistory.EmployeeId;
@@ -154,6 +178,14 @@ namespace EmployeeHistoryApplication.Controllers
             else
             {
                 DateTime? dateToToCompare = null;
+                if (!JobHistory.IsAfterCurrentDate(jobHistory.dateFrom))
+                {
+                    ModelState.AddModelError("dateTo", "The starting date must not be after todays's date");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
                 if (jobHistory.dateTo == null)
                 {
                     dateToToCompare = DateTime.Now;
@@ -164,13 +196,29 @@ namespace EmployeeHistoryApplication.Controllers
                 }
                 var existingJobHistories = _context.JobHistory.Where(j => j.EmployeeId == jobHistory.EmployeeId && j.Id != jobHistory.Id)
       .ToList();
+                if (jobHistory.dateTo == null & !JobHistory.IsThereACurrentDateNull(existingJobHistories))
+                {
+                    ModelState.AddModelError("dateTo", "There is already a current job. Edit that one, then add a new current job");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
+                if (jobHistory.dateTo == null & !JobHistory.IsDateRangeValidForNullDateTo(existingJobHistories, jobHistory.dateFrom, dateToToCompare))
+                {
+                    ModelState.AddModelError("dateTo", "This is not the earliest job");
+                    ViewData["EmployeeId"] = jobHistory.EmployeeId;
+                    ViewData["EmployeeName"] = jobHistory.Employee.Name;
+                    ViewData["EmployeeSurname"] = jobHistory.Employee.Surname;
+                    return View(jobHistory);
+                }
                 if (!JobHistory.IsDateRangeValid(existingJobHistories, jobHistory.dateFrom, dateToToCompare))
                 {
                     ModelState.AddModelError("dateTo", "\"The date range overlaps with an existing job history.");
                     ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
                     return View(jobHistory);
                 }
-                else if (jobHistory.dateTo != null&&jobHistory.dateFrom >= jobHistory.dateTo)
+                if (jobHistory.dateTo != null && jobHistory.dateFrom >= jobHistory.dateTo)
                 {
                     ModelState.AddModelError("dateTo", "The start date must be before the end date.");
                     ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Id", jobHistory.EmployeeId);
