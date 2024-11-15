@@ -28,7 +28,7 @@
                 <input asp-for="JobPostition" class="form-control" />
                 <span asp-validation-for="JobPostition" class="text-danger"></span>
             </div>
-            <div class="form-group">
+ @*            <div class="form-group">
                 <label asp-for="dateFrom" class="control-label"></label>
                 <input type="datetime-local" asp-for="dateFrom" class="form-control" />
                 <span asp-validation-for="dateFrom" class="text-danger"></span>
@@ -36,6 +36,17 @@
             <div class="form-group">
                 <label asp-for="dateTo" class="control-label"></label>
                 <input type="datetime-local" asp-for="dateTo" class="form-control" />
+                <span asp-validation-for="dateTo" class="text-danger"></span>
+            </div> *@
+
+            <div class="form-group">
+                <label asp-for="dateFrom" class="control-label"></label>
+                <input type="text" asp-for="dateFrom" class="form-control datepicker" />
+                <span asp-validation-for="dateFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateTo" class="control-label"></label>
+                <input type="text" asp-for="dateTo" class="form-control datepicker" placeholder="Blank means Today's date" />
                 <span asp-validation-for="dateTo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -51,7 +62,16 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',   // Set the date format
+                autoclose: true,        // Close the calendar after date selection
+                todayHighlight: true,   // Highlight the current date
+            });
+        });
+    </script>
 }
-
-

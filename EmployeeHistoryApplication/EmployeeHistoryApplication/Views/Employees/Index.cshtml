@@ -4,6 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap 4 (if using Bootstrap 4) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Or Bootstrap 5 (if using Bootstrap 5) -->
+<!-- Bootstrap 5 doesn't require jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <h1>Index</h1>
 
 <a asp-action="Create">Create New</a>
@@ -56,44 +67,54 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
-                    <div class="modal fade" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title">Delete employee</h4>
-                                </div>
-                                <div class="modal-body" style="text-align: center;">
-                                    <p>Are you sure you want to delete employee</p>
-                                    <h5>@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Surname)</h5>
-                                    <br />
-                                    <p>With all records history?</p>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <p style="color: red; font-weight: bold;" bold>Slide to confirm:</p>
-                                    <input type="range" id="confirmSlider" min="0" max="100" value="0" oninput="checkSlider()">
-
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" data-dismiss="modal" class="btn">Close</a>
-                                    <form asp-action="Delete" asp-route-id="@item.Id">
-                                        <input type="hidden" asp-for="@item.Id" />
-                                        <input type="submit" value="Delete" class="btn btn-danger" id="deleteButton" disabled />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-id="@item.Id" data-name="@item.Name" data-surname="@item.Surname">Delete</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+<!-- Modal Template -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Delete employee</h4>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <p>Are you sure you want to delete the employee?</p>
+                <h5 id="employeeName"></h5>
+                <br />
+                <p>With all records history?</p>
+                <br />
+                <p style="color: red; font-weight: bold;">Slide to confirm:</p>
+                <input type="range" id="confirmSlider" min="0" max="100" value="0" oninput="checkSlider()">
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn">Close</a>
+                <form asp-action="Delete" id="deleteForm">
+                    <input type="hidden" name="id" id="employeeId" />
+                    <input type="submit" value="Delete" class="btn btn-danger" id="deleteButton" disabled />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+   
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var employeeId = button.data('id'); 
+        var employeeName = button.data('name');
+        var employeeSurname = button.data('surname');
+
+        var modal = $(this);
+        modal.find('#employeeName').text(employeeName + ' ' + employeeSurname);
+        modal.find('#employeeId').val(employeeId);
+    });
+
     function checkSlider() {
         var slider = document.getElementById("confirmSlider");
         var deleteButton = document.getElementById("deleteButton");

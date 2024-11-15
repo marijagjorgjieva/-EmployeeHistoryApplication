@@ -21,7 +21,16 @@
                 <td>@job.CompanyName</td>
                 <td>@job.JobPostition</td>
                 <td>@job.dateFrom.ToShortDateString()</td>
-                <td>@job.dateTo?.ToShortDateString()</td>
+                <td>
+                    @if (job.dateTo == null)
+                    {
+                        <span style="font-weight: bold; font-style: italic; color: green;">  - at moment</span>
+                    }
+                    else
+                    {
+                        @job.dateTo?.ToShortDateString()
+                    }
+                </td>
             </tr>
         }
     </tbody>
