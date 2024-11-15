@@ -110,8 +110,8 @@
         var sortOrderValue = sortCriteria + (sortOrder === 'asc' ? '' : '_desc');
 
         var url = '@Url.Action("Edit", new { id = "__id__", sortOrder = "__sortOrder__" })'
-            .replace('__id__', '@Model.Id') // Replace __id__ with the model's ID
-            .replace('__sortOrder__', sortOrderValue); // Replace __sortOrder__ with the chosen sort order
+            .replace('__id__', '@Model.Id') 
+            .replace('__sortOrder__', sortOrderValue); 
 
         window.location.href = url;
     }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
 using Microsoft.Data.SqlClient;
+using ClosedXML.Excel;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -29,25 +30,25 @@ namespace EmployeeHistoryApplication.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                searchString = searchString.ToLower();  
+                searchString = searchString.ToLower();
 
                 employeesQuery = employeesQuery.Where(e => e.Name.ToLower().Contains(searchString)
                                                        || e.Surname.ToLower().Contains(searchString));
             }
 
-           
+
             int totalEmployees = await employeesQuery.CountAsync();
 
-           
+
             var employees = await employeesQuery
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-           
+
             var totalPages = (int)Math.Ceiling((double)totalEmployees / pageSize);
 
-          
+
             ViewData["SearchString"] = searchString;
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = totalPages;
@@ -76,7 +77,7 @@ namespace EmployeeHistoryApplication.Controllers
             var jobsQuery = _context.JobHistory
                 .Where(j => j.EmployeeId == id);
 
-        
+
             int jobsCount = await jobsQuery.CountAsync();
             var jobs = await jobsQuery
                 .Skip((page - 1) * pageSize)
@@ -229,5 +230,34 @@ namespace EmployeeHistoryApplication.Controllers
         {
             return _context.Employee.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Employees");
+            var employees = _context.Employee.ToList();
+            worksheet.Cell(1, 1).Value = "Name";
+            worksheet.Cell(1, 2).Value = "Surname";
+            worksheet.Cell(1, 3).Value = "Adress";
+            worksheet.Cell(1, 4).Value = "EMBG";
+            int i = 2;
+            foreach (Employee employee in employees)
+            {
+                worksheet.Cell(i, 1).Value = employee.Name;
+                worksheet.Cell(i, 2).Value = employee.Surname;
+                worksheet.Cell(i, 3).Value = employee.Adress;
+                worksheet.Cell(i, 4).Value = employee.EMBG;
+
+                i++;
+
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                workbook.SaveAs(stream);
+                var content = stream.ToArray();
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "example.xlsx");
+            }
+        }
+
     }
 }
