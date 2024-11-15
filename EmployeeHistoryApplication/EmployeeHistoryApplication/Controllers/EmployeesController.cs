@@ -56,17 +56,16 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
 
-        // GET: Employees/Details/5
-        public async Task<IActionResult> Details(int? id, string sortOrder)
+        public async Task<IActionResult> Details(int? id, string sortOrder, int page = 1)
         {
+            int pageSize = 2;
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            // Retrieve the employee with jobs
             var employee = await _context.Employee
-                .Include(e => e.jobs) // Ensure jobs are included in the result
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
@@ -74,32 +73,26 @@ namespace EmployeeHistoryApplication.Controllers
                 return NotFound();
             }
 
-            // Sort jobs based on the selected sort order
-            ViewData["SortOrder"] = sortOrder;
-            switch (sortOrder)
-            {
-                case "dateFrom_desc":
-                    employee.jobs.ToList().Sort(new JobHistoryDateComparerDescending());
-                    break;
-                case "dateTo_desc":
-                     employee.jobs.OrderByDescending(j => j.dateTo).ToList();
-                    break;
-                case "dateFrom":
-                     employee.jobs.OrderBy(j => j.dateFrom).ToList();
-                    break;
-                case "dateTo":
-                    employee.jobs.OrderBy(j => j.dateTo).ToList();
-                    break;
-                default:
-                    // Default sorting, maybe by job title or by start date
-                    employee.jobs.OrderByDescending(j => j.dateFrom).ToList();
-                    break;
-                    
-            }
+            var jobsQuery = _context.JobHistory
+                .Where(j => j.EmployeeId == id);
 
-            // Pass the employee model (including sorted jobs) to the view
+        
+            int jobsCount = await jobsQuery.CountAsync();
+            var jobs = await jobsQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var totalPages = (int)Math.Ceiling((double)jobsCount / pageSize);
+
+            ViewData["Jobs"] = jobs;
+            ViewData["CurrentPage"] = page;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["SortOrder"] = sortOrder;
+
             return View(employee);
         }
+
 
 
 

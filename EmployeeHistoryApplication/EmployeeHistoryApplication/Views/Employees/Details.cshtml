@@ -1,85 +1,85 @@
 ﻿@model EmployeeHistoryApplication.Models.Employee
 
-@{
-    ViewData["Title"] = "Details";
-}
+<h1>Employee Details</h1>
 
-<h1>Details</h1>
 
 <div>
     <h4>Employee</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EMBG)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EMBG)
-        </dd>
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+        <dt class="col-sm-2">Surname</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Surname)</dd>
+        <dt class="col-sm-2">Address</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Adress)</dd>
+        <dt class="col-sm-2">EMBG</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.EMBG)</dd>
     </dl>
 </div>
+
 <div>
-    <h4>Job History</h4>
-    <div>
-        <label for="sortCriteria">Sort by:</label>
-        <select id="sortCriteria">
-            <option value="dateFrom">Date From</option>
-            <option value="dateTo">Date To</option>
-        </select>
+    <label for="sortCriteria">Sort by:</label>
+    <select id="sortCriteria">
+        <option value="dateFrom">Date From</option>
+        <option value="dateTo">Date To</option>
+    </select>
 
-        <label for="sortOrder">Order:</label>
-        <select id="sortOrder">
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-        </select>
+    <label for="sortOrder">Order:</label>
+    <select id="sortOrder">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
 
-        <button class="btn btn-primary" onclick="applySort()">Sort</button>
-    </div>
+    <button class="btn btn-primary" onclick="applySort()">Sort</button>
+</div>
 
-    @Html.Partial("_JobHistoryList", Model.jobs)
+<!-- Job History Partial View -->
+@Html.Partial("_JobHistoryList", ViewData["Jobs"])
+
+<!-- Pagination Controls -->
+<div class="pagination">
+    @if (ViewData["CurrentPage"] != null && ViewData["TotalPages"] != null)
+    {
+        var currentPage = (int)ViewData["CurrentPage"];
+        var totalPages = (int)ViewData["TotalPages"];
+        <ul class="pagination">
+            @if (currentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link"  href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">Previous</a>
+                </li>
+            }
+
+
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class ="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"],page=i })">@i</a>
+                </li>
+            }
+
+            @if (currentPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">Next</a>
+                </li>
+            }
+        </ul>
+    }
 </div>
 
 <script>
-    window.onload = function() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var sortOrder = urlParams.get('sortOrder') || ''; 
-
-        if (sortOrder) {
-            var sortCriteria = sortOrder.includes('dateFrom') ? 'dateFrom' : 'dateTo';
-            var order = sortOrder.includes('desc') ? 'desc' : 'asc';
-
-            document.getElementById("sortCriteria").value = sortCriteria;
-            document.getElementById("sortOrder").value = order;
-        }
-    };
-
     function applySort() {
         var sortCriteria = document.getElementById("sortCriteria").value;
         var sortOrder = document.getElementById("sortOrder").value;
 
         var sortOrderValue = sortCriteria + (sortOrder === 'asc' ? '' : '_desc');
 
-        var url = '@Url.Action("Details", new { id = "__id__", sortOrder = "__sortOrder__" })'
-            .replace('__id__', '@Model.Id') // Replace __id__ with the model's ID
-            .replace('__sortOrder__', sortOrderValue); // Replace __sortOrder__ with the chosen sort order
+        var url = '@Url.Action("Details", new { id = "__id__", sortOrder = "__sortOrder__", page = "__page__" })'
+            .replace('__id__', '@Model.Id')
+            .replace('__sortOrder__', sortOrderValue)
+            .replace('__page__', 1);
 
         window.location.href = url;
     }
