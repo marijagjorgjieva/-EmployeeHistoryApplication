@@ -89,6 +89,11 @@
         </ul>
     }
 </div>
+<form asp-controller="JobHistories" asp-action="Create" asp-route-id="@Model.Id" method="get">
+    <button type="submit" value="Add new job history" class="btn btn-primary">Add new job history</button>
+</form>
+<a href="@Url.Action("ExportToExcelByUser",new {userId=Model.Id})" class="btn btn-secondary">Export @Model.Name @Model.Surname's jobs to Excel</a>
+
 <script>
     window.onload = function() {
         var urlParams = new URLSearchParams(window.location.search);

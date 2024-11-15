@@ -68,7 +68,8 @@ namespace EmployeeHistoryApplication.Controllers
                 SetEmployeeViewData(jobHistory.Employee);
                 return View(jobHistory);
             }
-
+            jobHistory.Employee.jobs.Add(jobHistory);
+            _context.Update(jobHistory.Employee);
             _context.Add(jobHistory);
             await _context.SaveChangesAsync();
             return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
@@ -104,7 +105,8 @@ namespace EmployeeHistoryApplication.Controllers
                 SetEmployeeViewData(jobHistory.Employee);
                 return View(jobHistory);
             }
-
+            jobHistory.Employee.jobs.Add(jobHistory);
+            _context.Update(jobHistory.Employee);
             _context.Update(jobHistory);
             await _context.SaveChangesAsync();
             return RedirectToAction("Edit", "Employees", new { id = jobHistory.EmployeeId });
@@ -131,6 +133,8 @@ namespace EmployeeHistoryApplication.Controllers
             var jobHistory = await _context.JobHistory.FindAsync(id);
             if (jobHistory != null)
             {
+                jobHistory.Employee.jobs.Remove(jobHistory);
+                _context.Update(jobHistory.Employee);
                 _context.JobHistory.Remove(jobHistory);
                 await _context.SaveChangesAsync();
             }
@@ -140,7 +144,6 @@ namespace EmployeeHistoryApplication.Controllers
 
         private bool JobHistoryExists(int id) => _context.JobHistory.Any(e => e.Id == id);
 
-        // Helper method to set common Employee data in ViewData
         private void SetEmployeeViewData(Employee employee)
         {
             ViewData["EmployeeId"] = employee.Id;
@@ -148,10 +151,8 @@ namespace EmployeeHistoryApplication.Controllers
             ViewData["EmployeeSurname"] = employee.Surname;
         }
 
-        // Helper method to validate job history date logic
         private async Task<bool> ValidateJobHistoryDates(JobHistory jobHistory)
         {
-            // Check for valid start date
             if (!JobHistory.IsAfterCurrentDate(jobHistory.dateFrom))
             {
                 ModelState.AddModelError("dateTo", "The starting date must not be after today's date.");
@@ -160,12 +161,10 @@ namespace EmployeeHistoryApplication.Controllers
 
             DateTime? dateToToCompare = jobHistory.dateTo ?? DateTime.Now;
 
-            // Fetch existing job histories for the employee
             var existingJobHistories = await _context.JobHistory
                 .Where(j => j.EmployeeId == jobHistory.EmployeeId && j.Id != jobHistory.Id)
                 .ToListAsync();
 
-            // Validate date ranges
             if (jobHistory.dateTo == null && !JobHistory.IsThereACurrentDateNull(existingJobHistories))
             {
                 ModelState.AddModelError("dateTo", "There is already a current job. Edit that one, then add a new current job.");

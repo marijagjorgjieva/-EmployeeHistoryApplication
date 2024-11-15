@@ -9,6 +9,7 @@ using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
 using Microsoft.Data.SqlClient;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -246,6 +247,38 @@ namespace EmployeeHistoryApplication.Controllers
                 worksheet.Cell(i, 2).Value = employee.Surname;
                 worksheet.Cell(i, 3).Value = employee.Adress;
                 worksheet.Cell(i, 4).Value = employee.EMBG;
+
+                i++;
+
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                workbook.SaveAs(stream);
+                var content = stream.ToArray();
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "example.xlsx");
+            }
+        }
+
+        public async Task<IActionResult> ExportToExcelByUser(int userId)
+        {
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Employee Jobs");
+            var employee = await _context.Employee
+                        .Include(e => e.jobs)
+                        .FirstOrDefaultAsync(e => e.Id == userId);
+            worksheet.Cell(1, 1).Value = "Job records- "+employee.Name+" "+ employee.Surname;
+            worksheet.Cell(2, 1).Value = "Company Name";
+            worksheet.Cell(2, 2).Value = "Job Position";
+            worksheet.Cell(2, 3).Value = "Date From";
+            worksheet.Cell(2, 4).Value = "Date To";
+            int i = 3;
+            foreach (JobHistory job in employee.jobs)
+            {
+                worksheet.Cell(i, 1).Value = job.CompanyName;
+                worksheet.Cell(i, 2).Value = job.JobPostition;
+                worksheet.Cell(i, 3).Value = job.dateFrom.ToString();
+                worksheet.Cell(i, 4).Value = job.dateTo.ToString();
 
                 i++;
 
