@@ -59,7 +59,36 @@
 
     @Html.Partial("_JobHistoryList2", Model.jobs)
 </div>
+<div class="pagination">
+    @if (ViewData["CurrentPage"] != null && ViewData["TotalPages"] != null)
+    {
+        var currentPage = (int)ViewData["CurrentPage"];
+        var totalPages = (int)ViewData["TotalPages"];
+        <ul class="pagination">
+            @if (currentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">Previous</a>
+                </li>
+            }
 
+
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"],page=i })">@i</a>
+                </li>
+            }
+
+            @if (currentPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">Next</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
 <script>
     window.onload = function() {
         var urlParams = new URLSearchParams(window.location.search);

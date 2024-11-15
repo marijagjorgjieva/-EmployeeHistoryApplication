@@ -119,22 +119,40 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: Employees/Edit/5
         //Ovde da se izvrsi sortiranje po date to desc
         //ovde da se sortira po daden parametar
-        public async Task<IActionResult> Edit(int? id, string sortOrder)
+        public async Task<IActionResult> Edit(int? id, string sortOrder, int page = 1)
         {
+
+            int pageSize = 2;
             if (id == null)
             {
                 return NotFound();
             }
 
             var employee = await _context.Employee
-                           .Include(e => e.jobs) //treba da se zemat i jobs
-                           .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
                 return NotFound();
             }
-           ViewData["SortOrder"] = sortOrder;
+
+
+            var jobsQuery = _context.JobHistory
+                .Where(j => j.EmployeeId == id);
+
+
+            int jobsCount = await jobsQuery.CountAsync();
+            var jobs = await jobsQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var totalPages = (int)Math.Ceiling((double)jobsCount / pageSize);
+
+            ViewData["Jobs"] = jobs;
+            ViewData["CurrentPage"] = page;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["SortOrder"] = sortOrder;
 
             return View(employee);
         }
@@ -185,6 +203,9 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 return NotFound();
             }
+
+            var jobsQuery = _context.JobHistory
+             .Where(j => j.EmployeeId == id);
 
             return View(employee);
         }
