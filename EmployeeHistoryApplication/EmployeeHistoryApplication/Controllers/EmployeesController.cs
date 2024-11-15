@@ -21,27 +21,33 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
 
-        // GET: Employees
         public async Task<IActionResult> Index(string searchString, int page = 1)
         {
-            int pageSize = 2; 
+            int pageSize = 2;
+
             var employeesQuery = _context.Employee.AsQueryable();
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
-                employeesQuery = employeesQuery.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                                                       || s.Surname.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+                searchString = searchString.ToLower();  
+
+                employeesQuery = employeesQuery.Where(e => e.Name.ToLower().Contains(searchString)
+                                                       || e.Surname.ToLower().Contains(searchString));
             }
 
+           
             int totalEmployees = await employeesQuery.CountAsync();
 
+           
             var employees = await employeesQuery
-                .Skip((page - 1) * pageSize) 
+                .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
+           
             var totalPages = (int)Math.Ceiling((double)totalEmployees / pageSize);
 
+          
             ViewData["SearchString"] = searchString;
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = totalPages;
