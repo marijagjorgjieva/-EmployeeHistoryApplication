@@ -106,7 +106,7 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: Employees/Edit/5
         //Ovde da se izvrsi sortiranje po date to desc
         //ovde da se sortira po daden parametar
-        public async Task<IActionResult> Edit(int? id, int sortOrder)
+        public async Task<IActionResult> Edit(int? id, string sortOrder)
         {
             if (id == null)
             {
@@ -121,7 +121,7 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 return NotFound();
             }
-           /* ViewData["SortOrder"] = sortOrder;*/
+           ViewData["SortOrder"] = sortOrder;
 
             return View(employee);
         }
