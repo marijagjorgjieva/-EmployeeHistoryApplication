@@ -36,20 +36,51 @@
         </dd>
     </dl>
 </div>
-<<div>
+<div>
     <h4>Job History</h4>
     <div>
-        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateFrom">Sort by Date From Ascending</a> |
-        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateFrom_desc">Sort by Date From Descending</a> |
-        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateTo">Sort by Date To Ascending</a> |
-        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-sortOrder="dateTo_desc">Sort by Date To Descending</a>
+        <label for="sortCriteria">Sort by:</label>
+        <select id="sortCriteria">
+            <option value="dateFrom">Date From</option>
+            <option value="dateTo">Date To</option>
+        </select>
+
+        <label for="sortOrder">Order:</label>
+        <select id="sortOrder">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+
+        <button onclick="applySort()">Sort</button>
     </div>
 
     @Html.Partial("_JobHistoryList", Model.jobs)
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <div>
-        <a asp-controller="Employees" asp-action="Index">View all employees</a>
-    </div>
-</div>
+
+<script>
+    window.onload = function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var sortOrder = urlParams.get('sortOrder') || ''; 
+
+        if (sortOrder) {
+            var sortCriteria = sortOrder.includes('dateFrom') ? 'dateFrom' : 'dateTo';
+            var order = sortOrder.includes('desc') ? 'desc' : 'asc';
+
+            document.getElementById("sortCriteria").value = sortCriteria;
+            document.getElementById("sortOrder").value = order;
+        }
+    };
+
+    function applySort() {
+        var sortCriteria = document.getElementById("sortCriteria").value;
+        var sortOrder = document.getElementById("sortOrder").value;
+
+        var sortOrderValue = sortCriteria + (sortOrder === 'asc' ? '' : '_desc');
+
+        var url = '@Url.Action("Details", new { id = "__id__", sortOrder = "__sortOrder__" })'
+            .replace('__id__', '@Model.Id') // Replace __id__ with the model's ID
+            .replace('__sortOrder__', sortOrderValue); // Replace __sortOrder__ with the chosen sort order
+
+        window.location.href = url;
+    }
+</script>

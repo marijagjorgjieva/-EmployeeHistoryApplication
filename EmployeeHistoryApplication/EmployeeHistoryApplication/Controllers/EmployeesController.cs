@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
+using Microsoft.Data.SqlClient;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -105,7 +106,7 @@ namespace EmployeeHistoryApplication.Controllers
         // GET: Employees/Edit/5
         //Ovde da se izvrsi sortiranje po date to desc
         //ovde da se sortira po daden parametar
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int sortOrder)
         {
             if (id == null)
             {
@@ -120,6 +121,8 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 return NotFound();
             }
+           /* ViewData["SortOrder"] = sortOrder;*/
+
             return View(employee);
         }
 
