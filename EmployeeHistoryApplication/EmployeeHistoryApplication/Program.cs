@@ -15,7 +15,12 @@ builder.Services.AddDbContext<EmployeeHistoryApplicationContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var supportedCultures = new[] { new CultureInfo("en-GB") };
+    var supportedCultures = new[]
+    {
+        new CultureInfo("en-GB"), 
+        new CultureInfo("mk-MK"), 
+   
+    };
     options.DefaultRequestCulture = new RequestCulture("en-GB");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;

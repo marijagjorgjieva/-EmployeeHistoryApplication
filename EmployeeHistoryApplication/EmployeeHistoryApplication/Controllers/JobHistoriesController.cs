@@ -133,8 +133,8 @@ namespace EmployeeHistoryApplication.Controllers
             var jobHistory = await _context.JobHistory.FindAsync(id);
             if (jobHistory != null)
             {
-                jobHistory.Employee.jobs.Remove(jobHistory);
-                _context.Update(jobHistory.Employee);
+                //jobHistory.Employee.jobs.Remove(jobHistory);
+              //  _context.Update(jobHistory.Employee);
                 _context.JobHistory.Remove(jobHistory);
                 await _context.SaveChangesAsync();
             }

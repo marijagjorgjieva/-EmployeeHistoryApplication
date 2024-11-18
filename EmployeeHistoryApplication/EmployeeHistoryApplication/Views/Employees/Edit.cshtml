@@ -57,7 +57,7 @@
         <button class="btn btn-primary" onclick="applySort()">Sort</button>
     </div>
 
-    @Html.Partial("_JobHistoryList2", Model.jobs)
+    @Html.Partial("_JobHistoryList2", ViewData["Jobs"])
 </div>
 <div class="pagination">
     @if (ViewData["CurrentPage"] != null && ViewData["TotalPages"] != null)

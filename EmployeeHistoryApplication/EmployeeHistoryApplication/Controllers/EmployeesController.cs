@@ -58,6 +58,7 @@ namespace EmployeeHistoryApplication.Controllers
         }
 
 
+        //ovde da se sortira listata pa da se prikazi
         public async Task<IActionResult> Details(int? id, string sortOrder, int page = 1)
         {
             int pageSize = 2;
@@ -80,10 +81,30 @@ namespace EmployeeHistoryApplication.Controllers
 
 
             int jobsCount = await jobsQuery.CountAsync();
-            var jobs = await jobsQuery
+            var jobs = await jobsQuery.ToListAsync();
+            //tuka sortiraj
+            switch (sortOrder)
+            {
+                case "dateFrom_desc":
+                    jobs = jobs.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo_desc":
+                    jobs = jobs.OrderByDescending(j => j.dateTo).ToList();
+                    break;
+                case "dateFrom":
+                    jobs = jobs.OrderBy(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo":
+                    jobs = jobs.OrderBy(j => j.dateTo).ToList();
+                    break;
+                default:
+                    jobs = jobs.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+            }
+
+            jobs = jobs
                 .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+                .Take(pageSize).ToList();
 
             var totalPages = (int)Math.Ceiling((double)jobsCount / pageSize);
 
@@ -144,12 +165,33 @@ namespace EmployeeHistoryApplication.Controllers
 
 
             int jobsCount = await jobsQuery.CountAsync();
-            var jobs = await jobsQuery
+            var jobs = await jobsQuery.ToListAsync();
+            //tuka sortiraj
+            switch (sortOrder)
+            {
+                case "dateFrom_desc":
+                    jobs = jobs.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo_desc":
+                    jobs = jobs.OrderByDescending(j => j.dateTo).ToList();
+                    break;
+                case "dateFrom":
+                    jobs = jobs.OrderBy(j => j.dateFrom).ToList();
+                    break;
+                case "dateTo":
+                    jobs = jobs.OrderBy(j => j.dateTo).ToList();
+                    break;
+                default:
+                    jobs = jobs.OrderByDescending(j => j.dateFrom).ToList();
+                    break;
+            }
+
+            jobs = jobs
                 .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+                .Take(pageSize).ToList();
 
             var totalPages = (int)Math.Ceiling((double)jobsCount / pageSize);
+
 
             ViewData["Jobs"] = jobs;
             ViewData["CurrentPage"] = page;
@@ -277,8 +319,8 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 worksheet.Cell(i, 1).Value = job.CompanyName;
                 worksheet.Cell(i, 2).Value = job.JobPostition;
-                worksheet.Cell(i, 3).Value = job.dateFrom.ToString();
-                worksheet.Cell(i, 4).Value = job.dateTo.ToString();
+                worksheet.Cell(i, 3).Value = job.dateFrom.ToString("dd/MM/yyyy");
+                worksheet.Cell(i, 4).Value = job.dateTo?.ToString("dd/MM/yyyy");
 
                 i++;
 

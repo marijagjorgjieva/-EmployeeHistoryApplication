@@ -14,7 +14,7 @@
     </thead>
     <tbody>
         @{
-            var sortedModel = Model.ToList();
+            var sortedModel = Model;
             var sortOrder = ViewData["SortOrder"]?.ToString();
 
             switch (sortOrder)
