@@ -54,6 +54,9 @@ namespace EmployeeHistoryApplication.Controllers
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = totalPages;
 
+            ViewData["TotalEmployees"] = totalEmployees;
+            ViewData["DisplayedEmployees"] = employees.Count;
+
             return View(employees);
         }
 
@@ -112,6 +115,9 @@ namespace EmployeeHistoryApplication.Controllers
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = totalPages;
             ViewData["SortOrder"] = sortOrder;
+            ViewData["TotalJobs"] = jobsCount;
+            ViewData["DisplayedJobs"] = jobs.Count;
+
 
             return View(employee);
         }
@@ -197,7 +203,8 @@ namespace EmployeeHistoryApplication.Controllers
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = totalPages;
             ViewData["SortOrder"] = sortOrder;
-
+            ViewData["TotalJobs"] = jobsCount;
+            ViewData["DisplayedJobs"] = jobs.Count;
             return View(employee);
         }
 
@@ -298,7 +305,7 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 workbook.SaveAs(stream);
                 var content = stream.ToArray();
-                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "example.xlsx");
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "EmployeesList.xlsx");
             }
         }
 
@@ -330,7 +337,7 @@ namespace EmployeeHistoryApplication.Controllers
             {
                 workbook.SaveAs(stream);
                 var content = stream.ToArray();
-                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "example.xlsx");
+                return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "EmployeeRecordsList.xlsx");
             }
         }
 

@@ -3,8 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using EmployeeHistoryApplication.Data;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
