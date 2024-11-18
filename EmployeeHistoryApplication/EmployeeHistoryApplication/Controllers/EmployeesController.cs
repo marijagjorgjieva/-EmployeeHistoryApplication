@@ -10,15 +10,19 @@ using EmployeeHistoryApplication.Models;
 using Microsoft.Data.SqlClient;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.Extensions.Localization;
 
 namespace EmployeeHistoryApplication.Controllers
 {
     public class EmployeesController : Controller
     {
         private readonly EmployeeHistoryApplicationContext _context;
+        private readonly IStringLocalizer<EmployeesController> _localizer;
 
-        public EmployeesController(EmployeeHistoryApplicationContext context)
+
+        public EmployeesController(EmployeeHistoryApplicationContext context, IStringLocalizer<EmployeesController> localizer)
         {
+            _localizer = localizer;
             _context = context;
         }
 

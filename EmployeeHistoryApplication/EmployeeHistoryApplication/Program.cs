@@ -8,46 +8,48 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<EmployeeHistoryApplicationContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeHistoryApplicationContext") ?? throw new InvalidOperationException("Connection string 'EmployeeHistoryApplicationContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeHistoryApplicationContext")
+    ?? throw new InvalidOperationException("Connection string 'EmployeeHistoryApplicationContext' not found.")));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[]
     {
-        new CultureInfo("en-GB"), 
-        new CultureInfo("mk-MK"), 
-   
+        new CultureInfo("en-GB"),
+        new CultureInfo("mk-MK"),
+         new CultureInfo("sq-AL"),
     };
-    options.DefaultRequestCulture = new RequestCulture("en-GB");
+
+    options.DefaultRequestCulture = new RequestCulture("en-GB", "en-GB");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
 
 var app = builder.Build();
 
-//za errors?
+var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
+app.UseRequestLocalization(localizationOptions);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-//od http vo https
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>().Value;
-app.UseRequestLocalization(localizationOptions);
-
-//ja run apliakcijata
 app.Run();

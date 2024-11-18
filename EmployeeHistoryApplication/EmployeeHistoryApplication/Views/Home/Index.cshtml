@@ -1,9 +1,12 @@
-﻿@{
+﻿@using EmployeeHistoryApplication.Controllers
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HomeController> _localizer;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h5 class="display-4">Hello...</h5>
-    <h1 class="display-1">Welcome</h1>
-    <h3 class="display-4">This is an employee history tracking app</h3>
+    <h5 class="display-4">@_localizer["HelloString"]</h5>
+    <h3 class="display-4">@_localizer["DescriptionString"]</h3>
 </div>
