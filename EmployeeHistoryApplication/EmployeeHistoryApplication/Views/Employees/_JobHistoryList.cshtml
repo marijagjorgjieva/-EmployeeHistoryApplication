@@ -6,8 +6,28 @@
         <tr>
             <th>Company Name</th>
             <th>Job Position</th>
-            <th>Date From</th>
-            <th>Date To</th>
+            <th>
+                Date From
+                @if (ViewData["SortOrder"]?.ToString() == "dateFrom")
+                {
+                    <span>&#8593;</span> <!-- Upward arrow -->
+                }
+                else if (ViewData["SortOrder"]?.ToString() == "dateFrom_desc")
+                {
+                    <span>&#8595;</span> <!-- Downward arrow -->
+                }
+            </th>
+            <th>
+                Date To
+                @if (ViewData["SortOrder"]?.ToString() == "dateTo")
+                {
+                    <span>&#8593;</span> <!-- Upward arrow -->
+                }
+                else if (ViewData["SortOrder"]?.ToString() == "dateTo_desc")
+                {
+                    <span>&#8595;</span> <!-- Downward arrow -->
+                }
+            </th>
         </tr>
     </thead>
     <tbody>
