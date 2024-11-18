@@ -61,7 +61,7 @@ namespace EmployeeHistoryApplication.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to sdfsf.
         /// </summary>
         public static string DescriptionString {
             get {
@@ -70,7 +70,7 @@ namespace EmployeeHistoryApplication.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to sdfsdf.
         /// </summary>
         public static string HelloString {
             get {

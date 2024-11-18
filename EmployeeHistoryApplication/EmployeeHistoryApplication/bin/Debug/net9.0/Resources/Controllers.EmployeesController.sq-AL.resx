@@ -120,4 +120,52 @@
   <data name="CreateNewString" xml:space="preserve">
     <value>Krijo një rekord të ri</value>
   </data>
+  <data name="DeleteString" xml:space="preserve">
+    <value>Fshije</value>
+  </data>
+  <data name="DetailsString" xml:space="preserve">
+    <value>Detajet</value>
+  </data>
+  <data name="EditString" xml:space="preserve">
+    <value>Ndrysho</value>
+  </data>
+  <data name="RemoveFilterString" xml:space="preserve">
+    <value>Hiq filtrin</value>
+  </data>
+  <data name="SearchButtonString" xml:space="preserve">
+    <value>Kërko</value>
+  </data>
+  <data name="SearchByString" xml:space="preserve">
+    <value>Kërko me emër ose mbiemër</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>I parakohshëm</value>
+  </data>
+  <data name="NextString" xml:space="preserve">
+    <value>Pas</value>
+  </data>
+  <data name="ExportAllEmployeesText" xml:space="preserve">
+    <value>Eksporto të gjithë punonjësit në Excel</value>
+  </data>
+  <data name="DES" xml:space="preserve">
+    <value>Punonjës të shfaqur</value>
+  </data>
+  <data name="TotalEmployeesString" xml:space="preserve">
+    <value>Вкупно вработени</value>
+  </data>
+  <data name="DeleteEmployee" xml:space="preserve">
+    <value>Избриши вработен</value>
+  </data>
+  <data name="DeleteEmployeeMessage" xml:space="preserve">
+    <value>Дали сте сигурни дека сакате да го избришете вработениот</value>
+  </data>
+  <data name="DeleteEmployeeMessage2" xml:space="preserve">
+    <value>Со сите записи во историјата?</value>
+  </data>
+  <data name="SlideToConfirm" xml:space="preserve">
+    <value>Лизгај за да потврдите</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
 </root>

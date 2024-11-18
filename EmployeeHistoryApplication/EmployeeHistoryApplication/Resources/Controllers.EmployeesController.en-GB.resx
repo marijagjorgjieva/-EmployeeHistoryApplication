@@ -129,9 +129,6 @@
   <data name="EditString" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="PreviousString" xml:space="preserve">
-    <value>Previous</value>
-  </data>
   <data name="RemoveFilterString" xml:space="preserve">
     <value>RemoveFilter</value>
   </data>
@@ -140,5 +137,32 @@
   </data>
   <data name="SearchByString" xml:space="preserve">
     <value>Search by name or surname</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="NextString" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ExportAllEmployeesText" xml:space="preserve">
+    <value>Export all employees to Excel</value>
+  </data>
+  <data name="DES" xml:space="preserve">
+    <value>DisplayedEmployees</value>
+  </data>
+  <data name="TotalEmployeesString" xml:space="preserve">
+    <value>Total employees</value>
+  </data>
+  <data name="DeleteEmployee" xml:space="preserve">
+    <value>Delete employee</value>
+  </data>
+  <data name="DeleteEmployeeMessage" xml:space="preserve">
+    <value>Are you sure you want to delete</value>
+  </data>
+  <data name="DeleteEmployeeMessage2" xml:space="preserve">
+    <value>With all records history?</value>
+  </data>
+  <data name="SlideToConfirm" xml:space="preserve">
+    <value>Slide to confirm</value>
   </data>
 </root>

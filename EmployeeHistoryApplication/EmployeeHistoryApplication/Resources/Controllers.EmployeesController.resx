@@ -129,9 +129,6 @@
   <data name="EditString" xml:space="preserve">
     <value />
   </data>
-  <data name="PreviousString" xml:space="preserve">
-    <value />
-  </data>
   <data name="RemoveFilterString" xml:space="preserve">
     <value />
   </data>
@@ -139,6 +136,36 @@
     <value />
   </data>
   <data name="SearchByString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="NextString" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ExportAllEmployeesText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DES" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalEmployeesString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteEmployeeMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteEmployeeMessage2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SlideToConfirm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CloseButton" xml:space="preserve">
     <value />
   </data>
 </root>

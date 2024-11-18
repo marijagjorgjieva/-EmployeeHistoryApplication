@@ -75,7 +75,7 @@
             @if (currentPage > 1)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, searchString = ViewData["SearchString"] })">Previous</a>
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, searchString = ViewData["SearchString"] })">@_localizer["PreviousString"]</a>
                 </li>
             }
 
@@ -89,7 +89,7 @@
             @if (currentPage < totalPages)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, searchString = ViewData["SearchString"] })">Next</a>
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, searchString = ViewData["SearchString"] })">>@_localizer["NextString"]</a>
                 </li>
             }
         </ul>
@@ -99,7 +99,7 @@
         &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  Приказ на @ViewData["DisplayedEmployees"] од вкупно @ViewData["TotalEmployees"] вработени
     </p>
 </div>
-<a href="@Url.Action("ExportToExcel")" class="btn btn-secondary">Export all employees to Excel</a>
+<a href="@Url.Action("ExportToExcel")" class="btn btn-secondary">@_localizer["ExportAllEmployeesText"]</a>
 
 <!-- Modal Template -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -115,7 +115,7 @@
                 <br />
                 <p>With all records history?</p>
                 <br />
-                <p style="color: red; font-weight: bold;">Slide to confirm:</p>
+                <p style="color: red; font-weight: bold;"></p>
                 <input type="range" id="confirmSlider" min="0" max="100" value="0" oninput="checkSlider()">
             </div>
             <div class="modal-footer">
