@@ -148,10 +148,10 @@
     <value>Export all employees to Excel</value>
   </data>
   <data name="DES" xml:space="preserve">
-    <value>DisplayedEmployees</value>
+    <value>Displayed employees:</value>
   </data>
   <data name="TotalEmployeesString" xml:space="preserve">
-    <value>Total employees</value>
+    <value>total employees</value>
   </data>
   <data name="DeleteEmployee" xml:space="preserve">
     <value>Delete employee</value>
@@ -164,5 +164,56 @@
   </data>
   <data name="SlideToConfirm" xml:space="preserve">
     <value>Slide to confirm</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="FromString" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Embg" xml:space="preserve">
+    <value>EMBG</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by:</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Date to</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Date from</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="Asc" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Descending</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="EmployeeDetails" xml:space="preserve">
+    <value>Employee details</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="AddNewJobHistory" xml:space="preserve">
+    <value>Add new job history</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export this job history to excel</value>
   </data>
 </root>

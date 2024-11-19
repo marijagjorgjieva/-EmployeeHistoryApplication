@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Employees\Delete.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.en-GB.resx" />
     <EmbeddedResource Remove="Resources\Resources.mk-MK.resx" />
     <EmbeddedResource Remove="Resources\Resources.resx" />

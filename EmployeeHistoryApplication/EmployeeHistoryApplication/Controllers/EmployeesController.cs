@@ -11,6 +11,7 @@ using Microsoft.Data.SqlClient;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -68,6 +69,9 @@ namespace EmployeeHistoryApplication.Controllers
         //ovde da se sortira listata pa da se prikazi
         public async Task<IActionResult> Details(int? id, string sortOrder, int page = 1)
         {
+
+            var text = _localizer["EditString"];
+            var currentCulture = CultureInfo.CurrentCulture.Name;
             int pageSize = 2;
 
             if (id == null)

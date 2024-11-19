@@ -24,7 +24,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
          new CultureInfo("sq-AL"),
     };
 
-    options.DefaultRequestCulture = new RequestCulture("en-GB", "en-GB");
+    options.DefaultRequestCulture = new RequestCulture("mk-MK", "mk-MK");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });

@@ -135,7 +135,8 @@
   <data name="SearchButtonString" xml:space="preserve">
     <value />
   </data>
-  <data name="SearchByString" xml:space="preserve">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SearchByString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="Previous" xml:space="preserve">
@@ -166,6 +167,54 @@
     <value />
   </data>
   <data name="CloseButton" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FromString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Embg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Asc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddNewJobHistory" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Export" xml:space="preserve">
     <value />
   </data>
 </root>

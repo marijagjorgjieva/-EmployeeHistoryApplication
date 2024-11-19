@@ -148,24 +148,72 @@
     <value>Експортирај ги сите вработени во ексел</value>
   </data>
   <data name="DES" xml:space="preserve">
-    <value>Прикажани вработени</value>
+    <value>Прикажани вработени:</value>
   </data>
   <data name="TotalEmployeesString" xml:space="preserve">
-    <value>Punonjës totalë</value>
+    <value>целосен број на вработени</value>
   </data>
   <data name="DeleteEmployee" xml:space="preserve">
-    <value>Fshi punonjësin</value>
+    <value>Избриши вработен</value>
   </data>
   <data name="DeleteEmployeeMessage" xml:space="preserve">
-    <value>A jeni të sigurt që dëshironi të fshini punonjësin </value>
+    <value>Дали си сигурен дека сакаш да го избришиш вработениот</value>
   </data>
   <data name="DeleteEmployeeMessage2" xml:space="preserve">
-    <value>Me të gjithë historikun e regjistrimeve?</value>
+    <value>Со цела историја на записи</value>
   </data>
   <data name="SlideToConfirm" xml:space="preserve">
-    <value>Shkruaj për të konfirmuar</value>
+    <value>Лизгај за потврда</value>
   </data>
   <data name="CloseButton" xml:space="preserve">
-    <value>Mbylle</value>
+    <value>Затвори</value>
+  </data>
+  <data name="FromString" xml:space="preserve">
+    <value>од</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Презиме</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="Embg" xml:space="preserve">
+    <value>ЕМБГ</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Подреди по:</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Датум до </value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Датум од</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Редослед</value>
+  </data>
+  <data name="Asc" xml:space="preserve">
+    <value>Растечки</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Опаѓачки</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Подреди</value>
+  </data>
+  <data name="EmployeeDetails" xml:space="preserve">
+    <value>Детали за вработен</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Вработен</value>
+  </data>
+  <data name="AddNewJobHistory" xml:space="preserve">
+    <value>Додади нов запис на работно место</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Експортирај ја листата </value>
   </data>
 </root>

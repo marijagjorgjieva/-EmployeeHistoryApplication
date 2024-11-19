@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateNewString" xml:space="preserve">
-    <value>Krijo një rekord të ri</value>
+    <value>Krijo të Re</value>
   </data>
   <data name="DeleteString" xml:space="preserve">
     <value>Fshije</value>
@@ -148,24 +148,72 @@
     <value>Eksporto të gjithë punonjësit në Excel</value>
   </data>
   <data name="DES" xml:space="preserve">
-    <value>Punonjës të shfaqur</value>
+    <value>Punonjës të shfaqur:</value>
   </data>
   <data name="TotalEmployeesString" xml:space="preserve">
-    <value>Вкупно вработени</value>
+    <value>punonjës totalë</value>
   </data>
   <data name="DeleteEmployee" xml:space="preserve">
-    <value>Избриши вработен</value>
+    <value>Fshi punonjësin</value>
   </data>
   <data name="DeleteEmployeeMessage" xml:space="preserve">
-    <value>Дали сте сигурни дека сакате да го избришете вработениот</value>
+    <value>A jeni të sigurt që dëshironi të fshini punonjësin </value>
   </data>
   <data name="DeleteEmployeeMessage2" xml:space="preserve">
-    <value>Со сите записи во историјата?</value>
+    <value>Me të gjithë historikun e regjistrimeve?</value>
   </data>
   <data name="SlideToConfirm" xml:space="preserve">
-    <value>Лизгај за да потврдите</value>
+    <value>Shkruaj për të konfirmuar</value>
   </data>
   <data name="CloseButton" xml:space="preserve">
-    <value>Затвори</value>
+    <value>Mbylle</value>
+  </data>
+  <data name="FromString" xml:space="preserve">
+    <value>nga</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Emri</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Mbiemri</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="Embg" xml:space="preserve">
+    <value>EMBG</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Lloji sipas:</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Data e datës</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Data nga</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Porosia</value>
+  </data>
+  <data name="Asc" xml:space="preserve">
+    <value>Duke u ngjitur</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Zbritja</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Lloji </value>
+  </data>
+  <data name="EmployeeDetails" xml:space="preserve">
+    <value>Detajet e punonjësve</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Punonjës</value>
+  </data>
+  <data name="AddNewJobHistory" xml:space="preserve">
+    <value>Shto historinë e re të punës</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Eksporto këtë histori pune </value>
   </data>
 </root>

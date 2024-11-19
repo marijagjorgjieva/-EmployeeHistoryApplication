@@ -1,37 +1,41 @@
 ﻿@model EmployeeHistoryApplication.Models.Employee
+@using EmployeeHistoryApplication.Controllers
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<EmployeesController> _localizer;
 
-<h1>Employee Details</h1>
+<h1>@_localizer["EmployeeDetails"]</h1>
 
 
 <div>
-    <h4>Employee</h4>
+    <h4>@_localizer["Employee"]</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">Name</dt>
+        <dt class="col-sm-2">@_localizer["Name"]</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
-        <dt class="col-sm-2">Surname</dt>
+        <dt class="col-sm-2">@_localizer["Surname"]</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.Surname)</dd>
-        <dt class="col-sm-2">Address</dt>
+        <dt class="col-sm-2">@_localizer["Add"]</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.Adress)</dd>
-        <dt class="col-sm-2">EMBG</dt>
+        <dt class="col-sm-2">@_localizer["EMBG"]</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.EMBG)</dd>
     </dl>
 </div>
 
 <div>
-    <label for="sortCriteria">Sort by:</label>
+    <label for="sortCriteria">@_localizer["SortBy"]</label>
     <select id="sortCriteria">
-        <option value="dateFrom">Date From</option>
-        <option value="dateTo">Date To</option>
+        <option value="dateFrom">@_localizer["DateFrom"]</option>
+        <option value="dateTo">@_localizer["DateTo"]</option>
     </select>
 
-    <label for="sortOrder">Order:</label>
+    <label for="sortOrder">@_localizer["Order"]</label>
     <select id="sortOrder">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
+        <option value="asc">@_localizer["Asc"]</option>
+        <option value="desc">@_localizer["Desc"]</option>
     </select>
 
-    <button class="btn btn-primary" onclick="applySort()">Sort</button>
+    <button class="btn btn-primary" onclick="applySort()">@_localizer["Sort"]</button>
 </div>
 
 @Html.Partial("_JobHistoryList", ViewData["Jobs"])
@@ -45,7 +49,7 @@
             @if (currentPage > 1)
             {
                 <li class="page-item">
-                    <a class="page-link"  href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">Previous</a>
+                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">@_localizer["Previous"]</a>
                 </li>
             }
 
@@ -60,13 +64,13 @@
             @if (currentPage < totalPages)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">Next</a>
+                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">@_localizer["NextString"]</a>
                 </li>
             }
         </ul>
 
         <p>
-            &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  Приказ на @ViewData["DisplayedJobs"] од вкупно @ViewData["TotalJobs"] работни позиции
+            &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedJobs"] @_localizer["From"] @ViewData["TotalJobs"] @_localizer["TotalEmployeesString"]
         </p>
     }
 </div>
