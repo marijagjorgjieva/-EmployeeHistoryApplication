@@ -216,4 +216,19 @@
   <data name="Export" xml:space="preserve">
     <value>Eksporto këtë histori pune </value>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Përsëri në listë</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Emri i kompanisë</value>
+  </data>
+  <data name="JobPosition" xml:space="preserve">
+    <value>Pozicioni i punës</value>
+  </data>
+  <data name="JobHistory" xml:space="preserve">
+    <value>Historia e punës</value>
+  </data>
+  <data name="TotalJobs" xml:space="preserve">
+    <value>totali i vendeve të punës</value>
+  </data>
 </root>

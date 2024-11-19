@@ -1,31 +1,35 @@
 ﻿@model IEnumerable<EmployeeHistoryApplication.Models.JobHistory>
+@using EmployeeHistoryApplication.Controllers
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<EmployeesController> _localizer;
 
-<h4>Job History</h4>
+<h4>@_localizer["JobHistory"]</h4>
 <table class="table">
     <thead>
         <tr>
-            <th>Company Name</th>
-            <th>Job Position</th>
+            <th>@_localizer["CompanyName"]</th>
+            <th>@_localizer["JobPosition"]</th>
             <th>
-                Date From
+                @_localizer["DateFrom"]
                 @if (ViewData["SortOrder"]?.ToString() == "dateFrom")
                 {
-                    <span>&#8593;</span> <!-- Upward arrow -->
+                    <span>&#8593;</span> 
                 }
                 else if (ViewData["SortOrder"]?.ToString() == "dateFrom_desc")
                 {
-                    <span>&#8595;</span> <!-- Downward arrow -->
+                    <span>&#8595;</span> 
                 }
             </th>
             <th>
-                Date To
+                @_localizer["DateTo"]
                 @if (ViewData["SortOrder"]?.ToString() == "dateTo")
                 {
-                    <span>&#8593;</span> <!-- Upward arrow -->
+                    <span>&#8593;</span> 
                 }
                 else if (ViewData["SortOrder"]?.ToString() == "dateTo_desc")
                 {
-                    <span>&#8595;</span> <!-- Downward arrow -->
+                    <span>&#8595;</span> 
                 }
             </th>
         </tr>
@@ -72,12 +76,12 @@
                 </td>
                 <td>
                     <form asp-controller="JobHistories" asp-action="Edit" asp-route-id="@job.Id" method="get">
-                        <button type="submit" value="Edit" class="btn btn-primary">Edit</button>
+                        <button type="submit" value="Edit" class="btn btn-primary">@_localizer["EditString"]</button>
                     </form>
                 </td>
                 <td>
                     <form asp-controller="JobHistories" asp-action="Delete" asp-route-id="@job.Id" method="get">
-                        <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+                        <button type="submit" value="Delete" class="btn btn-danger">@_localizer["DeleteString"]</button>
                     </form>
                 </td>
             </tr>

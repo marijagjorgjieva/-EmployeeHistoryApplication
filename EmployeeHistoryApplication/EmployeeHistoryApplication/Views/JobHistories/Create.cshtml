@@ -1,12 +1,15 @@
 ﻿@model EmployeeHistoryApplication.Models.JobHistory
-
+@using EmployeeHistoryApplication.Controllers
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<JobHistoriesController> _localizer;
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>@_localizer["CreateString"]</h1>
 
-<h4>JobHistory</h4>
+<h1>@_localizer["JobHistory"]</h1>
 <p>@ViewBag.EmployeeName</p>
 <p>@ViewBag.EmployeeSurname</p>
 <hr />
@@ -45,7 +48,7 @@
 </div>
 
 <div>
-    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@ViewBag.EmployeeId">Back to edit employee</a>
+    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@ViewBag.EmployeeId">@_localizer["BackToEditEmployee"]</a>
 </div>
 
 @section Scripts {

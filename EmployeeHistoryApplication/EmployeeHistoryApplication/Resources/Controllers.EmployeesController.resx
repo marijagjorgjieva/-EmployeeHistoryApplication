@@ -217,4 +217,19 @@
   <data name="Export" xml:space="preserve">
     <value />
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="JobPosition" xml:space="preserve">
+    <value />
+  </data>
+  <data name="JobHistory" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalJobs" xml:space="preserve">
+    <value />
+  </data>
 </root>

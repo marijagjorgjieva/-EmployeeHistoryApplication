@@ -216,4 +216,19 @@
   <data name="Export" xml:space="preserve">
     <value>Export this job history to excel</value>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="JobPosition" xml:space="preserve">
+    <value>Job position</value>
+  </data>
+  <data name="JobHistory" xml:space="preserve">
+    <value>Job history</value>
+  </data>
+  <data name="TotalJobs" xml:space="preserve">
+    <value>total jobs</value>
+  </data>
 </root>

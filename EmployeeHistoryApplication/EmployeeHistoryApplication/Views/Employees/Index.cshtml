@@ -89,7 +89,7 @@
             @if (currentPage < totalPages)
             {
                 <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, searchString = ViewData["SearchString"] })">>@_localizer["NextString"]</a>
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, searchString = ViewData["SearchString"] })">@_localizer["NextString"]</a>
                 </li>
             }
         </ul>

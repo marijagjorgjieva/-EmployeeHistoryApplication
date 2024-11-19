@@ -8,7 +8,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>@_localizer["EidtString"]</h1>
+<h1>@_localizer["EditString"]</h1>
 
 <h4>@_localizer["Employee"]</h4>
 <hr />
@@ -93,7 +93,7 @@
         </ul>
     }
     <p>
-        &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedJobs"] @_localizer["From"] @ViewData["TotalJobs"] @_localizer["TotalEmployeesString"]
+        &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedJobs"] @_localizer["FromString"] @ViewData["TotalJobs"] @_localizer["TotalEmployeesString"]
     </p>
 </div>
 <form asp-controller="JobHistories" asp-action="Create" asp-route-id="@Model.Id" method="get">

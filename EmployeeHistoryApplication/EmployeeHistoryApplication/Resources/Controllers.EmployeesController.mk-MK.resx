@@ -216,4 +216,19 @@
   <data name="Export" xml:space="preserve">
     <value>Експортирај ја листата </value>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Назад кон листата на вработени</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Име на компанија</value>
+  </data>
+  <data name="JobPosition" xml:space="preserve">
+    <value>Работна позиција</value>
+  </data>
+  <data name="JobHistory" xml:space="preserve">
+    <value>Историја на работни позиции</value>
+  </data>
+  <data name="TotalJobs" xml:space="preserve">
+    <value>вкупно работни позиции</value>
+  </data>
 </root>

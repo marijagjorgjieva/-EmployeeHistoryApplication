@@ -7,15 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
+using Microsoft.Extensions.Localization;
 
 namespace EmployeeHistoryApplication.Controllers
 {
     public class JobHistoriesController : Controller
     {
         private readonly EmployeeHistoryApplicationContext _context;
+        private readonly IStringLocalizer<JobHistoriesController> _localizer;
 
-        public JobHistoriesController(EmployeeHistoryApplicationContext context)
+
+        public JobHistoriesController(EmployeeHistoryApplicationContext context, IStringLocalizer<JobHistoriesController> localizer)
         {
+            _localizer = localizer;
             _context = context;
         }
 

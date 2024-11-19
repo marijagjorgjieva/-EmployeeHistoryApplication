@@ -117,118 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateNewString" xml:space="preserve">
-    <value>Create New</value>
+  <data name="Add" xml:space="preserve">
+    <value>Adresa</value>
   </data>
-  <data name="DeleteString" xml:space="preserve">
-    <value>Delete</value>
+  <data name="AddNewJobHistory" xml:space="preserve">
+    <value>Shto historinë e re të punës</value>
   </data>
-  <data name="DetailsString" xml:space="preserve">
-    <value>Details</value>
+  <data name="Asc" xml:space="preserve">
+    <value>Duke u ngjitur</value>
   </data>
-  <data name="EditString" xml:space="preserve">
-    <value>Edit</value>
+  <data name="BackToEditEmployee" xml:space="preserve">
+    <value>Përsëri për të redaktuar punonjësin</value>
   </data>
-  <data name="RemoveFilterString" xml:space="preserve">
-    <value>RemoveFilter</value>
-  </data>
-  <data name="SearchButtonString" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="SearchByString" xml:space="preserve">
-    <value>Search by name or surname</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="NextString" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="ExportAllEmployeesText" xml:space="preserve">
-    <value>Export all employees to Excel</value>
-  </data>
-  <data name="DES" xml:space="preserve">
-    <value>Displayed employees:</value>
-  </data>
-  <data name="TotalEmployeesString" xml:space="preserve">
-    <value>total employees</value>
-  </data>
-  <data name="DeleteEmployee" xml:space="preserve">
-    <value>Delete employee</value>
-  </data>
-  <data name="DeleteEmployeeMessage" xml:space="preserve">
-    <value>Are you sure you want to delete</value>
-  </data>
-  <data name="DeleteEmployeeMessage2" xml:space="preserve">
-    <value>With all records history?</value>
-  </data>
-  <data name="SlideToConfirm" xml:space="preserve">
-    <value>Slide to confirm</value>
+  <data name="BackToList" xml:space="preserve">
+    <value>Përsëri në listë</value>
   </data>
   <data name="CloseButton" xml:space="preserve">
-    <value>Close</value>
+    <value>Mbylle</value>
   </data>
-  <data name="FromString" xml:space="preserve">
-    <value>from</value>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Emri i kompanisë</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="CreateNewString" xml:space="preserve">
+    <value>Krijo të Re</value>
   </data>
-  <data name="Surname" xml:space="preserve">
-    <value>Surname</value>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Data nga</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>Address</value>
+  <data name="DateTo" xml:space="preserve">
+    <value>Data e datës</value>
+  </data>
+  <data name="DeleteEmployee" xml:space="preserve">
+    <value>Fshi punonjësin</value>
+  </data>
+  <data name="DeleteEmployeeMessage" xml:space="preserve">
+    <value>A jeni të sigurt që dëshironi të fshini punonjësin </value>
+  </data>
+  <data name="DeleteEmployeeMessage2" xml:space="preserve">
+    <value>Me të gjithë historikun e regjistrimeve?</value>
+  </data>
+  <data name="DeleteJobMessage" xml:space="preserve">
+    <value>Je i sigurt që dëshiron ta fshish këtë?</value>
+  </data>
+  <data name="DeleteString" xml:space="preserve">
+    <value>Fshije</value>
+  </data>
+  <data name="DES" xml:space="preserve">
+    <value>Punonjës të shfaqur:</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Zbritja</value>
+  </data>
+  <data name="DetailsString" xml:space="preserve">
+    <value>Detajet</value>
+  </data>
+  <data name="EditString" xml:space="preserve">
+    <value>Ndrysho</value>
   </data>
   <data name="Embg" xml:space="preserve">
     <value>EMBG</value>
   </data>
-  <data name="SortBy" xml:space="preserve">
-    <value>Sort by:</value>
-  </data>
-  <data name="DateTo" xml:space="preserve">
-    <value>Date to</value>
-  </data>
-  <data name="DateFrom" xml:space="preserve">
-    <value>Date from</value>
-  </data>
-  <data name="Order" xml:space="preserve">
-    <value>Order by</value>
-  </data>
-  <data name="Asc" xml:space="preserve">
-    <value>Ascending</value>
-  </data>
-  <data name="Desc" xml:space="preserve">
-    <value>Descending</value>
-  </data>
-  <data name="Sort" xml:space="preserve">
-    <value>Sort</value>
+  <data name="Employee" xml:space="preserve">
+    <value>Punonjës</value>
   </data>
   <data name="EmployeeDetails" xml:space="preserve">
-    <value>Employee details</value>
-  </data>
-  <data name="Employee" xml:space="preserve">
-    <value>Employee</value>
-  </data>
-  <data name="AddNewJobHistory" xml:space="preserve">
-    <value>Add new job history</value>
+    <value>Detajet e punonjësve</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Export this job history to excel</value>
+    <value>Eksporto këtë histori pune </value>
   </data>
-  <data name="BackToList" xml:space="preserve">
-    <value>Back to list</value>
+  <data name="ExportAllEmployeesText" xml:space="preserve">
+    <value>Eksporto të gjithë punonjësit në Excel</value>
   </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Company name</value>
-  </data>
-  <data name="JobPosition" xml:space="preserve">
-    <value>Job position</value>
+  <data name="FromString" xml:space="preserve">
+    <value>nga</value>
   </data>
   <data name="JobHistory" xml:space="preserve">
-    <value>Job history</value>
+    <value>Historia e punës</value>
+  </data>
+  <data name="JobPosition" xml:space="preserve">
+    <value>Pozicioni i punës</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Emri</value>
+  </data>
+  <data name="NextString" xml:space="preserve">
+    <value>Pas</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Porosia</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>I parakohshëm</value>
+  </data>
+  <data name="RemoveFilterString" xml:space="preserve">
+    <value>Hiq filtrin</value>
+  </data>
+  <data name="SearchButtonString" xml:space="preserve">
+    <value>Kërko</value>
+  </data>
+  <data name="SearchByString" xml:space="preserve">
+    <value>Kërko me emër ose mbiemër</value>
+  </data>
+  <data name="SlideToConfirm" xml:space="preserve">
+    <value>Shkruaj për të konfirmuar</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Lloji </value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Lloji sipas:</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Mbiemri</value>
+  </data>
+  <data name="TotalEmployeesString" xml:space="preserve">
+    <value>punonjës totalë</value>
   </data>
   <data name="TotalJobs" xml:space="preserve">
-    <value>total jobs</value>
+    <value>totali i vendeve të punës</value>
   </data>
 </root>
