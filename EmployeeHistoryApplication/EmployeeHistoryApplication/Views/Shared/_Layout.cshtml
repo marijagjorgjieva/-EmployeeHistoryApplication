@@ -17,18 +17,36 @@
 <body>
     <header>
        @*  ovde dodadi meni za setting na language *@
-        <form action="/Culture/SetCulture" method="get">
-            <select name="culture" onchange="this.form.submit()">
+     @*    <form action="/Culture/SetCulture" method="get">
+            <select name="culture" onchange="this.form.submit(); console.log('Form submitted');">
                 <option value="en-GB" selected="@((CultureInfo.CurrentCulture.Name == "en-GB") ? "selected" : "")">English</option>
-                <option value="mk-MK" selected="@((CultureInfo.CurrentCulture.Name == "mk-MK") ? "selected" : "")">Macedonian</option>
                 <option value="sq-AL" selected="@((CultureInfo.CurrentCulture.Name == "sq-AL") ? "selected" : "")">Albanian</option>
+                <option value="mk-MK" selected="@((CultureInfo.CurrentCulture.Name == "mk-MK") ? "selected" : "")">Macedonian</option>
             </select>
             <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+        </form> *@
+
+        <form action="/Culture/SetCulture" method="get">
+            <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+            <input type="hidden" name="culture" id="cultureInput" />
+
+            <div>
+                <a href="javascript:void(0);" onclick="setCulture('en-GB');"
+                   class="@((CultureInfo.CurrentCulture.Name == "en-GB") ? "active" : "")">
+                    English
+                </a>
+                |
+                <a href="javascript:void(0);" onclick="setCulture('sq-AL');"
+                   class="@((CultureInfo.CurrentCulture.Name == "sq-AL") ? "active" : "")">
+                    Albanian
+                </a>
+                |
+                <a href="javascript:void(0);" onclick="setCulture('mk-MK');"
+                   class="@((CultureInfo.CurrentCulture.Name == "mk-MK") ? "active" : "")">
+                    Macedonian
+                </a>
+            </div>
         </form>
-
-
-
-
         @* ---------------------------------------------- *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -62,6 +80,14 @@
 
         </div>
     </footer>
+
+    <script>
+        function setCulture(culture) {
+            document.getElementById('cultureInput').value = culture;
+
+            document.querySelector('form').submit();
+        }
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

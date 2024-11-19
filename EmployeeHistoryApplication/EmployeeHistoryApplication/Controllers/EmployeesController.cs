@@ -30,8 +30,9 @@ namespace EmployeeHistoryApplication.Controllers
 
         public async Task<IActionResult> Index(string searchString, int page = 1)
         {
+            
             int pageSize = 2;
-
+            var teskt = _localizer["Asc"];
             var employeesQuery = _context.Employee.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))

@@ -3,6 +3,8 @@ using System.Globalization;
 using EmployeeHistoryApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Globalization;
+
 
 namespace EmployeeHistoryApplication.Controllers
 {

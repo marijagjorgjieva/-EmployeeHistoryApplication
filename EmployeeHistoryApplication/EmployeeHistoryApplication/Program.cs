@@ -23,10 +23,12 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
         new CultureInfo("mk-MK"),
         new CultureInfo("sq-AL"),
     };
+
+    options.DefaultRequestCulture = new RequestCulture("mk-MK", "mk-MK");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 
-    options.RequestCultureProviders.Insert(1, new CookieRequestCultureProvider());
+    options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
 });
 
 var app = builder.Build();

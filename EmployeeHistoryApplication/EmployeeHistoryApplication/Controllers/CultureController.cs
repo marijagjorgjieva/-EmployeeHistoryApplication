@@ -11,14 +11,13 @@ namespace EmployeeHistoryApplication.Controllers
             var supportedCultures = new[] { "en-GB", "mk-MK", "sq-AL" };
             if (Array.Exists(supportedCultures, c => c.Equals(culture, StringComparison.OrdinalIgnoreCase)))
             {
+
                 Response.Cookies.Append(
-                    "Culture",
-                    culture,
-                    new CookieOptions() { Expires = DateTime.UtcNow.AddYears(1), IsEssential = true });
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
 
                 var cultureInfo = new CultureInfo(culture);
-                CultureInfo.CurrentCulture = cultureInfo;
-                CultureInfo.CurrentUICulture = cultureInfo;
                 var currentCulture = CultureInfo.CurrentCulture.Name;
             }
 
