@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using EmployeeHistoryApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -14,6 +15,7 @@ namespace EmployeeHistoryApplication.Controllers
         {
             _logger = logger;
             _localizer = localizer;
+            var currentCulture = CultureInfo.CurrentCulture.Name;
 
         }
 

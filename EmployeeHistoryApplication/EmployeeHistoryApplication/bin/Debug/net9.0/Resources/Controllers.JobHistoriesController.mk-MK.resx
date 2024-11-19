@@ -157,7 +157,7 @@
     <value>Со цела историја на записи</value>
   </data>
   <data name="DeleteJobMessage" xml:space="preserve">
-    <value>Дали си сигурен дека сакаш да го избришиш?</value>
+    <value>Дали си сигурен дека сакаш да избришиш?</value>
   </data>
   <data name="DeleteString" xml:space="preserve">
     <value>Избриши</value>

@@ -4,6 +4,7 @@ using EmployeeHistoryApplication.Data;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,6 @@ builder.Services.AddDbContext<EmployeeHistoryApplicationContext>(options =>
     ?? throw new InvalidOperationException("Connection string 'EmployeeHistoryApplicationContext' not found.")));
 
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
@@ -21,18 +21,18 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     {
         new CultureInfo("en-GB"),
         new CultureInfo("mk-MK"),
-         new CultureInfo("sq-AL"),
+        new CultureInfo("sq-AL"),
     };
-
-    options.DefaultRequestCulture = new RequestCulture("mk-MK", "mk-MK");
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
+
+    options.RequestCultureProviders.Insert(1, new CookieRequestCultureProvider());
 });
 
 var app = builder.Build();
 
 var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
-app.UseRequestLocalization(localizationOptions);
+app.UseRequestLocalization(localizationOptions);  
 
 if (!app.Environment.IsDevelopment())
 {
@@ -41,9 +41,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.UseAuthorization();
