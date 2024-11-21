@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<JobHistoriesController> _localizer;
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -15,40 +16,65 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form id="createJobHistoryForm" asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="hidden" asp-for="EmployeeId" class="form-control" value="@ViewBag.EmployeeId" />
             </div>
             <div class="form-group">
                 <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("CompanyName")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="CompanyName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JobPostition" class="control-label"></label>
-                <input asp-for="JobPostition" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("JobPostition")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="JobPostition" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="dateFrom" class="control-label"></label>
-                <input type="text" asp-for="dateFrom" class="form-control datepicker" />
+                @(Html.Kendo().DatePicker()
+                    .Name("dateFrom")
+                    .Format("dd/MM/yyyy")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="dateFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="dateTo" class="control-label"></label>
-                <input type="text" asp-for="dateTo" class="form-control datepicker" placeholder="Blank means Today's date" />
+                @(Html.Kendo().DatePicker()
+                    .Name("dateTo")
+                    .Format("dd/MM/yyyy")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="dateTo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                @(Html.Kendo().Button()
+                    .Name("CreateButton")
+                    .ThemeColor(ThemeColor.Primary)
+                    .Content(_localizer["CreateString"])
+                    .HtmlAttributes(new { type = "submit" })
+                    )
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@ViewBag.EmployeeId">@_localizer["BackToEditEmployee"]</a>
+
+<div class="form-group">
+    @(Html.Kendo().Button()
+        .Name("BackButton")
+        .ThemeColor(ThemeColor.Base)
+        .Content(_localizer["BackToEditEmployee"])
+        .HtmlAttributes(new { type = "button", onclick = "window.location.href='" + Url.Action("Edit", "Employees", new { id = Model.Employee.Id }) + "';" })
+        )
 </div>
 
 @section Scripts {
@@ -56,12 +82,18 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        $(document).ready(function () {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',   // Set the date format
-                autoclose: true,        // Close the calendar after date selection
-                todayHighlight: true,   // Highlight the current date
-            });
+        $('#createJobHistoryForm').submit(function(event) {
+            var companyName = $("input[name='CompanyName']").val();
+            var jobPostition = $("input[name='JobPostition']").val();
+            var dateFrom = $("input[name='dateFrom']").val();
+            var dateTo = $("input[name='dateTo']").val();
+
+            console.log("Company Name: " + companyName);
+            console.log("Job Position: " + jobPostition);
+            console.log("Date From: " + dateFrom);
+            console.log("Date To: " + dateTo);
+
+            // event.preventDefault();
         });
     </script>
 }

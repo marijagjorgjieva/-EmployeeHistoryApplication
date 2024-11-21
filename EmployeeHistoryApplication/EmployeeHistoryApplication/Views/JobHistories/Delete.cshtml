@@ -15,35 +15,53 @@
     <h4>@_localizer["JobHistory"]</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @_localizer["CompanyName"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CompanyName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @_localizer["JobPosition"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.JobPostition)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @_localizer["DateFrom"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.dateFrom)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @_localizer["DateTo"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.dateTo)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-controller="Employees" asp-action="Edit" asp-route-id="@Model.Employee.Id">@_localizer["BackToEditEmployee"]</a> |
+
+    <form method="post" asp-action="Delete">
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" />
+        </div>
+
+        <div class="form-group">
+            @(Html.Kendo().Button()
+                .Name("DeleteButton")
+                .ThemeColor(ThemeColor.Error)
+                .Content(_localizer["DeleteString"])
+                .HtmlAttributes(new { type = "submit" })
+                )
+        </div>
+
+        <div class="form-group">
+            @(Html.Kendo().Button()
+                .Name("BackButton")
+                .ThemeColor(ThemeColor.Base)
+                .Content(_localizer["BackToEditEmployee"])
+                .HtmlAttributes(new { type = "button", onclick = "window.location.href='" + Url.Action("Edit", "Employees", new { id = Model.Employee.Id }) + "';" })
+                )
+        </div>
     </form>
 </div>

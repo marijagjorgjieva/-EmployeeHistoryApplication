@@ -29,6 +29,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0-rc.2.24508.2" />
 	  <PackageReference Include="Localization.AspNetCore.TagHelpers" Version="0.3.0" />
+	  <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2024.4.1112" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,5 +73,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties UseCdnSupport="" /></VisualStudio></ProjectExtensions>
 
 </Project>

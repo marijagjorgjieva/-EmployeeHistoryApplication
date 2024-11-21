@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// gi dodavam kendo servisite
+builder.Services.AddKendo();
 builder.Services.AddDbContext<EmployeeHistoryApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeHistoryApplicationContext")
     ?? throw new InvalidOperationException("Connection string 'EmployeeHistoryApplicationContext' not found.")));

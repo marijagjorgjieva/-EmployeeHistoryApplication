@@ -1,6 +1,7 @@
 ﻿@model EmployeeHistoryApplication.Models.Employee
 @using EmployeeHistoryApplication.Controllers
 @using Microsoft.AspNetCore.Mvc.Localization
+@using Telerik
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<EmployeesController> _localizer;
 
@@ -16,28 +17,39 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                @(Html.Kendo().TextBoxFor(m => m.Name).HtmlAttributes(new { @class = "form-control" }))
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
+                @(Html.Kendo().TextBoxFor(m => m.Surname).HtmlAttributes(new { @class = "form-control" }))
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Adress" class="control-label"></label>
-                <input asp-for="Adress" class="form-control" />
+                @(Html.Kendo().TextBoxFor(m => m.Adress).HtmlAttributes(new { @class = "form-control" }))
                 <span asp-validation-for="Adress" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="EMBG" class="control-label"></label>
-                <input asp-for="EMBG" class="form-control" />
+                @(Html.Kendo().TextBoxFor(m => m.EMBG).HtmlAttributes(new { @class = "form-control" }))
                 <span asp-validation-for="EMBG" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+          
+                @(Html.Kendo().Button()
+                    .Name("primaryTextButton")
+                    .ThemeColor(ThemeColor.Success)
+                    .HtmlAttributes(new { type = "submit" })
+                    .Content("Create")
+                    )
             </div>
         </form>
     </div>
