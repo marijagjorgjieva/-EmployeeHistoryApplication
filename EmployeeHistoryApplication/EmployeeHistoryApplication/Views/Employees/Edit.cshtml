@@ -17,115 +17,69 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("Name")
+                    .Label(l => l.Content(_localizer["Name"]))
+                    .Value(Model.Name)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(true))  
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("Surname")
+                    .Label(l => l.Content(_localizer["Surname"]))
+                    .Value(Model.Surname)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(true))  
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Adress" class="control-label"></label>
-                <input asp-for="Adress" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("Adress")
+                    .Label(l => l.Content(_localizer["Add"]))
+                    .Value(Model.Adress)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(true))  
                 <span asp-validation-for="Adress" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="EMBG" class="control-label"></label>
-                <input asp-for="EMBG" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("EMBG")
+                    .Label(l => l.Content(_localizer["EMBG"]))
+                    .Value(Model.EMBG)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(true))  <!-- Enable for editing -->
                 <span asp-validation-for="EMBG" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                @(Html.Kendo().Button()
+                    .Name("SaveButton")
+                    .Content(_localizer["Save"])
+                    .HtmlAttributes(new { type = "submit" })
+                    .ThemeColor(ThemeColor.Success))
+
             </div>
         </form>
-
     </div>
 </div>
-<div>
-    <div>
-        <label for="sortCriteria">@_localizer["SortBy"]</label>
-        <select id="sortCriteria">
-            <option value="dateFrom">@_localizer["DateFrom"]</option>
-            <option value="dateTo">@_localizer["DateTo"]</option>
-        </select>
 
-        <label for="sortOrder">@_localizer["Order"]</label>
-        <select id="sortOrder">
-            <option value="asc">@_localizer["Asc"]</option>
-            <option value="desc">@_localizer["Desc"]</option>
-        </select>
-
-        <button class="btn btn-primary" onclick="applySort()">@_localizer["Sort"]</button>
-    </div>
 
     @Html.Partial("_JobHistoryList2", ViewData["Jobs"])
-</div>
-<div class="pagination">
-    @if (ViewData["CurrentPage"] != null && ViewData["TotalPages"] != null)
-    {
-        var currentPage = (int)ViewData["CurrentPage"];
-        var totalPages = (int)ViewData["TotalPages"];
-        <ul class="pagination">
-            @if (currentPage > 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">@_localizer["Previous"]</a>
-                </li>
-            }
 
 
-            @for (int i = 1; i <= totalPages; i++)
-            {
-                <li class="page-item @(i == currentPage ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"],page=i })">@i</a>
-                </li>
-            }
-
-            @if (currentPage < totalPages)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Edit", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">@_localizer["NextString"]</a>
-                </li>
-            }
-        </ul>
-    }
-    <p>
-        &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedJobs"] @_localizer["FromString"] @ViewData["TotalJobs"] @_localizer["TotalEmployeesString"]
-    </p>
-</div>
 <form asp-controller="JobHistories" asp-action="Create" asp-route-id="@Model.Id" method="get">
-    <button type="submit" value="Add new job history" class="btn btn-primary"> @_localizer["AddNewJobHistory"]</button>
+    @(Html.Kendo().Button()
+        .Name("AddNewJobHistoryButton")
+        .Content(_localizer["AddNewJobHistory"])
+        .HtmlAttributes(new { type = "submit" })
+        .ThemeColor(ThemeColor.Primary))
 </form>
-<a href="@Url.Action("ExportToExcelByUser", new { userId = Model.Id })" class="btn btn-secondary">
-    @_localizer["Export"]
-</a>
-<script>
-    window.onload = function() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var sortOrder = urlParams.get('sortOrder') || '';
 
-        if (sortOrder) {
-            var sortCriteria = sortOrder.includes('dateFrom') ? 'dateFrom' : 'dateTo';
-            var order = sortOrder.includes('desc') ? 'desc' : 'asc';
-
-            document.getElementById("sortCriteria").value = sortCriteria;
-            document.getElementById("sortOrder").value = order;
-        }
-    };
-
-    function applySort() {
-        var sortCriteria = document.getElementById("sortCriteria").value;
-        var sortOrder = document.getElementById("sortOrder").value;
-
-        var sortOrderValue = sortCriteria + (sortOrder === 'asc' ? '' : '_desc');
-
-        var url = '@Url.Action("Edit", new { id = "__id__", sortOrder = "__sortOrder__" })'
-            .replace('__id__', '@Model.Id') 
-            .replace('__sortOrder__', sortOrderValue); 
-
-        window.location.href = url;
-    }
-</script>
+</div>

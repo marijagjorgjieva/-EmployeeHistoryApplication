@@ -8,85 +8,58 @@
 
 
 <div>
-    <h4>@_localizer["Employee"]</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">@_localizer["Name"]</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
-        <dt class="col-sm-2">@_localizer["Surname"]</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Surname)</dd>
-        <dt class="col-sm-2">@_localizer["Add"]</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Adress)</dd>
-        <dt class="col-sm-2">@_localizer["EMBG"]</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.EMBG)</dd>
-    </dl>
+    <div>
+        <h4>@_localizer["Employee"]</h4>
+        <hr />
+        <div class="row">
+            <div class="col-sm-2">
+                @(Html.Kendo().TextBox()
+                    .Name("Name")
+                    .Label(l => l.Content(_localizer["Name"]))
+                    .Value(Model.Name)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(false))
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @(Html.Kendo().TextBox()
+                    .Name("Surname")
+                    .Label(l => l.Content(_localizer["Surname"]))
+                    .Value(Model.Surname)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(false))
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @(Html.Kendo().TextBox()
+                    .Name("Adress")
+                    .Label(l => l.Content(_localizer["Add"]))
+                    .Value(Model.Adress)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(false))
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @(Html.Kendo().TextBox()
+                    .Name("EMBG")
+                    .Label(l => l.Content(_localizer["EMBG"]))
+                    .Value(Model.EMBG)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    .Enable(false))
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div>
-    <label for="sortCriteria">@_localizer["SortBy"]</label>
-    <select id="sortCriteria">
-        <option value="dateFrom">@_localizer["DateFrom"]</option>
-        <option value="dateTo">@_localizer["DateTo"]</option>
-    </select>
 
-    <label for="sortOrder">@_localizer["Order"]</label>
-    <select id="sortOrder">
-        <option value="asc">@_localizer["Asc"]</option>
-        <option value="desc">@_localizer["Desc"]</option>
-    </select>
 
-    <button class="btn btn-primary" onclick="applySort()">@_localizer["Sort"]</button>
-</div>
 
 @Html.Partial("_JobHistoryList", ViewData["Jobs"])
 
-<div class="pagination">
-    @if (ViewData["CurrentPage"] != null && ViewData["TotalPages"] != null)
-    {
-        var currentPage = (int)ViewData["CurrentPage"];
-        var totalPages = (int)ViewData["TotalPages"];
-        <ul class="pagination">
-            @if (currentPage > 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage - 1 })">@_localizer["Previous"]</a>
-                </li>
-            }
-
-
-            @for (int i = 1; i <= totalPages; i++)
-            {
-                <li class="page-item @(i == currentPage ? "active" : "")">
-                    <a class ="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"],page=i })">@i</a>
-                </li>
-            }
-
-            @if (currentPage < totalPages)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Details", new { id = Model.Id, sortOrder = ViewData["SortOrder"], page = currentPage + 1 })">@_localizer["NextString"]</a>
-                </li>
-            }
-        </ul>
-
-        <p>
-            &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedJobs"] @_localizer["FromString"] @ViewData["TotalJobs"] @_localizer["TotalEmployeesString"]
-        </p>
-    }
-</div>
-
-<script>
-    function applySort() {
-        var sortCriteria = document.getElementById("sortCriteria").value;
-        var sortOrder = document.getElementById("sortOrder").value;
-
-        var sortOrderValue = sortCriteria + (sortOrder === 'asc' ? '' : '_desc');
-
-        var url = '@Url.Action("Details", new { id = "__id__", sortOrder = "__sortOrder__", page = "__page__" })'
-            .replace('__id__', '@Model.Id')
-            .replace('__sortOrder__', sortOrderValue)
-            .replace('__page__', 1);
-
-        window.location.href = url;
-    }
-</script>

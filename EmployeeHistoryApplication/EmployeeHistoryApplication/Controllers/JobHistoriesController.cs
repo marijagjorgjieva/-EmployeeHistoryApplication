@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using EmployeeHistoryApplication.Data;
 using EmployeeHistoryApplication.Models;
 using Microsoft.Extensions.Localization;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -21,6 +23,18 @@ namespace EmployeeHistoryApplication.Controllers
         {
             _localizer = localizer;
             _context = context;
+        }
+
+        public virtual JsonResult Grid_Destroy([DataSourceRequest] DataSourceRequest request, JobHistory e)
+        {
+            
+            
+                _context.JobHistory.Remove(_context.JobHistory.Where(x => x.Id == e.Id).FirstOrDefault());
+                _context.SaveChangesAsync();
+
+            
+
+            return Json(new[] { e }.ToDataSourceResult(request, ModelState));
         }
 
         // GET: JobHistories

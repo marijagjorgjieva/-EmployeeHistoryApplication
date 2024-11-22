@@ -4,91 +4,65 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<EmployeesController> _localizer;
 
+<h4>@_localizer["JobHistory"]</h4>
 
-
-@{
-    var sortedModel = Model;
-    var sortOrder = ViewData["SortOrder"]?.ToString();
-
-    switch (sortOrder)
+@(Html.Kendo().Grid<JobHistory>()
+    .Name("employeesGrid")
+    .Columns(columns =>
     {
-        case "dateFrom_desc":
-            sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-            break;
-        case "dateTo_desc":
-            sortedModel = sortedModel.OrderByDescending(j => j.dateTo).ToList();
-            break;
-        case "dateFrom":
-            sortedModel = sortedModel.OrderBy(j => j.dateFrom).ToList();
-            break;
-        case "dateTo":
-            sortedModel = sortedModel.OrderBy(j => j.dateTo).ToList();
-            break;
-        default:
-            sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-            break;
+        columns.Bound(p => p.CompanyName).Title(@_localizer["CompanyName"]).Width(120);
+        columns.Bound(p => p.JobPostition).Title(@_localizer["JobPosition"]).Width(120);
+        columns.Bound(p => p.dateFrom)
+               .Title(@_localizer["DateFrom"])
+               .Width(150)
+               .ClientTemplate("#= dateFrom ? kendo.toString(kendo.parseDate(dateFrom), 'dd/MM/yyyy') : '- at moment' #");
+        columns.Bound(p => p.dateTo)
+               .Title(@_localizer["DateTo"])
+               .Width(120)
+               .ClientTemplate("#= dateTo ? kendo.toString(kendo.parseDate(dateTo), 'dd/MM/yyyy') : '- at moment' #");
+
+        columns.Command(command =>
+        {
+            command.Custom("Edit").Text(@_localizer["EditString"]).Click("editRecord");
+            command.Destroy().Text(@_localizer["Delete"]);
+        }).Width(180).Title(@_localizer["Action"]);
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp)) 
+    .Groupable()
+    .Sortable()
+    .Filterable()
+    .Pageable(pageable => pageable
+        .ButtonCount(5)
+        .Refresh(true)
+        .PageSizes(new[] { 2, 4, 26 }))
+    .Excel(excel => excel
+        .FileName("Jobs List.xlsx")
+    )
+    .HtmlAttributes(new { style = "height:500px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(4)
+       .Model(model => model.Id(p => p.Id))
+        .Read(read => read.Action("Grid_Read_Jobs", "Employees").Data("getEmployeeId"))
+        .Update(update => update.Action("Update_Job", "JobHistories"))
+        .Destroy(delete => delete.Action("Grid_Destroy", "JobHistories").Data("getAntiForgeryToken")))
+    )
+)
+
+
+<script>
+      function editRecord(e) {
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = '/JobHistories/Edit/' + dataItem.Id;
+    }
+    function getEmployeeId() {
+        var employeeId = @Model.FirstOrDefault()?.EmployeeId;
+        return { id: employeeId };
     }
 
-}
-<h4>@_localizer["JobHistory"]</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@_localizer["CompanyName"]</th>
-            <th>@_localizer["JobPosition"]</th>
-            <th>
-                @_localizer["DateFrom"]
-                @if (ViewData["SortOrder"]?.ToString() == "dateFrom")
-                {
-                    <span>&#8593;</span> 
-                }
-                else if (ViewData["SortOrder"]?.ToString() == "dateFrom_desc")
-                {
-                    <span>&#8595;</span> 
-                }
-            </th>
-            <th>
-                @_localizer["DateTo"]
-                @if (ViewData["SortOrder"]?.ToString() == "dateTo")
-                {
-                    <span>&#8593;</span> 
-                }
-                else if (ViewData["SortOrder"]?.ToString() == "dateTo_desc")
-                {
-                    <span>&#8595;</span> 
-                }
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-     
-        @foreach (var job in sortedModel) 
-        {
-            <tr>
-                <td>@job.CompanyName</td>
-                <td>@job.JobPostition</td>
-                <td>@job.dateFrom.ToShortDateString()</td>
-                <td>
-                    @if (job.dateTo == null)
-                    {
-                        <span style="font-weight: bold; font-style: italic; color: green;">  - at moment</span>
-                    }
-                    else
-                    {
-                        @job.dateTo?.ToShortDateString()
-                    }
-                </td>
-                <td>
-                    <form asp-controller="JobHistories" asp-action="Edit" asp-route-id="@job.Id" method="get">
-                        <button type="submit" value="Edit" class="btn btn-primary">@_localizer["EditString"]</button>
-                    </form>
-                </td>
-                <td>
-                    <form asp-controller="JobHistories" asp-action="Delete" asp-route-id="@job.Id" method="get">
-                        <button type="submit" value="Delete" class="btn btn-danger">@_localizer["DeleteString"]</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+       function getAntiForgeryToken() {
+        return {
+            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+        };
+    }
+</script>

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Employees\Delete.cshtml" />
+    <Content Remove="Views\JobHistories\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

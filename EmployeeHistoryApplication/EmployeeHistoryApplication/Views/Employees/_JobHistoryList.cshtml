@@ -5,79 +5,45 @@
 @inject IStringLocalizer<EmployeesController> _localizer;
 
 <h4>@_localizer["JobHistory"]</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@_localizer["CompanyName"]</th>
-            <th>@_localizer["JobPosition"]</th>
-            <th>
-                @_localizer["DateFrom"]
-                @if (ViewData["SortOrder"]?.ToString() == "dateFrom")
-                {
-                    <span>&#8593;</span> 
-                }
-                else if (ViewData["SortOrder"]?.ToString() == "dateFrom_desc")
-                {
-                    <span>&#8595;</span> 
-                }
-            </th>
-            <th>
-                @_localizer["DateTo"]
-                @if (ViewData["SortOrder"]?.ToString() == "dateTo")
-                {
-                    <span>&#8593;</span> 
-                }
-                else if (ViewData["SortOrder"]?.ToString() == "dateTo_desc")
-                {
-                    <span>&#8595;</span> 
-                }
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var sortedModel = Model;
 
-            var sortOrder = ViewData["SortOrder"]?.ToString();
+@(Html.Kendo().Grid<JobHistory>()
+    .Name("employeesGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.CompanyName).Title(@_localizer["CompanyName"]).Width(120);
+        columns.Bound(p => p.JobPostition).Title(@_localizer["JobPosition"]).Width(120);
+        columns.Bound(p => p.dateFrom)
+               .Title(@_localizer["DateFrom"])
+               .Width(150)
+               .ClientTemplate("#= dateFrom ? kendo.toString(kendo.parseDate(dateFrom), 'dd/MM/yyyy') : '- at moment' #");
+        columns.Bound(p => p.dateTo)
+               .Title(@_localizer["DateTo"])
+               .Width(120)
+               .ClientTemplate("#= dateTo ? kendo.toString(kendo.parseDate(dateTo), 'dd/MM/yyyy') : '- at moment' #");
+    })
+        .ToolBar(tools => tools.Excel())
+        .Groupable()
+        .Sortable()
+        .Filterable()
+        .Pageable(pageable => pageable
+            .ButtonCount(5)
+            .Refresh(true)
+            .PageSizes(new[] { 2, 4, 26 }))
+        .Excel(excel => excel
+            .FileName("Jobs List.xlsx")
+        )
+        .HtmlAttributes(new { style = "height:500px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(4)
+            .Model(model => model.Id(p => p.Id))
+            .Read(read => read.Action("Grid_Read_Jobs", "Employees").Data("getEmployeeId"))
+        )
+)
 
-            switch (sortOrder)
-            {
-                case "dateFrom_desc":
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-                    break;
-                case "dateTo_desc":
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateTo).ToList();
-                    break;
-                case "dateFrom":
-                    sortedModel = sortedModel.OrderBy(j => j.dateFrom).ToList();
-                    break;
-                case "dateTo":
-                    sortedModel = sortedModel.OrderBy(j => j.dateTo).ToList();
-                    break;
-                default:
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-                    break;
-            }
-
-        }
-
-        @foreach (var job in sortedModel) // Loop through the sorted list
-        {
-            <tr>
-                <td>@job.CompanyName</td>
-                <td>@job.JobPostition</td>
-                <td>@job.dateFrom.ToShortDateString()</td>
-                <td>
-                    @if (job.dateTo == null)
-                    {
-                        <span style="font-weight: bold; font-style: italic; color: green;"> - at moment</span>
-                    }
-                    else
-                    {
-                        @job.dateTo?.ToShortDateString()
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<script>
+    function getEmployeeId() {
+        var employeeId = @Model.FirstOrDefault()?.EmployeeId;
+        return { id: employeeId };
+    }
+</script>
