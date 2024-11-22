@@ -138,6 +138,9 @@
   <data name="CompanyName" xml:space="preserve">
     <value>Име на компанија</value>
   </data>
+  <data name="Contains" xml:space="preserve">
+    <value>Содржи</value>
+  </data>
   <data name="CreateNewString" xml:space="preserve">
     <value>Креирај нов запис</value>
   </data>
@@ -171,6 +174,10 @@
   <data name="DetailsString" xml:space="preserve">
     <value>Детали</value>
   </data>
+  <data name="Displaying {0} - {1} of {2} records" xml:space="preserve">
+    <value>Прикажување на {0} - {1} од {2} записи
+</value>
+  </data>
   <data name="EditString" xml:space="preserve">
     <value>Уреди</value>
   </data>
@@ -191,6 +198,9 @@
   </data>
   <data name="FromString" xml:space="preserve">
     <value>од</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Записи на страна</value>
   </data>
   <data name="JobHistory" xml:space="preserve">
     <value>Историја на работни позиции</value>

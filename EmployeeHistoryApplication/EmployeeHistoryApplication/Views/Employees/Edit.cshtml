@@ -12,6 +12,10 @@
 
 <h4>@_localizer["Employee"]</h4>
 <hr />
+
+
+
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -54,7 +58,7 @@
                     .Label(l => l.Content(_localizer["EMBG"]))
                     .Value(Model.EMBG)
                     .HtmlAttributes(new { @class = "form-control" })
-                    .Enable(true))  <!-- Enable for editing -->
+                    .Enable(true))  
                 <span asp-validation-for="EMBG" class="text-danger"></span>
             </div>
 

@@ -234,4 +234,14 @@
   <data name="Action" xml:space="preserve">
     <value>Акција</value>
   </data>
+  <data name="Displaying {0} - {1} of {2} records" xml:space="preserve">
+    <value>Прикажување на {0} - {1} од {2} записи
+</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Записи на страна</value>
+  </data>
+  <data name="Contains" xml:space="preserve">
+    <value>Содржи</value>
+  </data>
 </root>

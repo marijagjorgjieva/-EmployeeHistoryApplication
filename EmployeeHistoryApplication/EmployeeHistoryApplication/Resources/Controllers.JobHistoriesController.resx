@@ -172,6 +172,9 @@
   <data name="DetailsString" xml:space="preserve">
     <value />
   </data>
+  <data name="Displaying {0} - {1} of {2} records" xml:space="preserve">
+    <value />
+  </data>
   <data name="EditString" xml:space="preserve">
     <value />
   </data>
@@ -191,6 +194,9 @@
     <value />
   </data>
   <data name="FromString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Items per page" xml:space="preserve">
     <value />
   </data>
   <data name="JobHistory" xml:space="preserve">

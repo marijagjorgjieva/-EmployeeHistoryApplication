@@ -24,11 +24,18 @@
         .ToolBar(tools => tools.Excel())
         .Groupable()
         .Sortable()
-        .Filterable()
+                .Filterable(filterable => filterable
+        .Mode(GridFilterMode.Row)
+        .Operators(operators => operators
+            .ForString(str => str.Contains(@_localizer["Contains"]))
+        )
+    )
         .Pageable(pageable => pageable
             .ButtonCount(5)
             .Refresh(true)
-            .PageSizes(new[] { 2, 4, 26 }))
+            .PageSizes(new[] { 2, 4, 26 }).Messages(messages => messages
+        .Display(@_localizer["Displaying {0} - {1} of {2} records"]).ItemsPerPage(@_localizer["Items per page"])
+    ))
         .Excel(excel => excel
             .FileName("Jobs List.xlsx")
         )

@@ -138,6 +138,9 @@
   <data name="CompanyName" xml:space="preserve">
     <value>Emri i kompanisë</value>
   </data>
+  <data name="Contains" xml:space="preserve">
+    <value>Përmban</value>
+  </data>
   <data name="CreateNewString" xml:space="preserve">
     <value>Krijo të Re</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="DetailsString" xml:space="preserve">
     <value>Detajet</value>
   </data>
+  <data name="Displaying {0} - {1} of {2} records" xml:space="preserve">
+    <value>Duke shfaqur {0} - {1} e regjistrimeve të {2}</value>
+  </data>
   <data name="EditString" xml:space="preserve">
     <value>Ndrysho</value>
   </data>
@@ -191,6 +197,9 @@
   </data>
   <data name="FromString" xml:space="preserve">
     <value>nga</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Artikujt për faqe</value>
   </data>
   <data name="JobHistory" xml:space="preserve">
     <value>Historia e punës</value>

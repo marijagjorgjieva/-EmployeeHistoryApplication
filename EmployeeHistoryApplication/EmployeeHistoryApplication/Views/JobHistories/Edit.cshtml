@@ -3,68 +3,99 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<JobHistoriesController> _localizer;
+
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = _localizer["EditString"];
 }
 
 <h1>@_localizer["EditString"]</h1>
 
 <h4>@_localizer["JobHistory"]</h4>
+
 <p>@ViewBag.EmployeeName</p>
 <p>@ViewBag.EmployeeSurname</p>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.EmployeeId, new { value = ViewBag.EmployeeId })
+
             <div class="form-group">
-                <input type="hidden" asp-for="EmployeeId" class="form-control" value="@ViewBag.EmployeeId" />
-            </div>
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("CompanyName")
+                    .Label(l => l.Content(_localizer["CompanyName"]))
+                    .Value(Model.CompanyName)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="CompanyName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="JobPostition" class="control-label"></label>
-                <input asp-for="JobPostition" class="form-control" />
+                @(Html.Kendo().TextBox()
+                    .Name("JobPostition")
+                    .Label(l => l.Content(_localizer["JobPosition"]))
+                    .Value(Model.JobPostition)
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="JobPostition" class="text-danger"></span>
             </div>
 
+            <label asp-for="dateFrom" class="control-label">@_localizer["DateFrom"]</label>
+
             <div class="form-group">
-                <label asp-for="dateFrom" class="control-label"></label>
-                <input type="text" asp-for="dateFrom" class="form-control datepicker" />
+                @(Html.Kendo().DatePicker()
+                    .Name("dateFrom")
+                    .Value(Model.dateFrom)
+                    .Format("dd/MM/yyyy")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="dateFrom" class="text-danger"></span>
             </div>
+
+            <label asp-for="dateTo" class="control-label">@_localizer["DateTo"]</label>
+
             <div class="form-group">
-                <label asp-for="dateTo" class="control-label"></label>
-                <input type="text" asp-for="dateTo" class="form-control datepicker" placeholder="Blank means Today's date" />
+                @(Html.Kendo().DatePicker()
+                    .Name("dateTo")
+                    .Value(Model.dateTo)
+                    .Format("dd/MM/yyyy")
+                    .HtmlAttributes(new { @class = "form-control" })
+                    )
                 <span asp-validation-for="dateTo" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                @(Html.Kendo().Button()
+                    .Name("SaveButton")
+                    .Content(_localizer["Save"])
+                    .HtmlAttributes(new { type = "submit" })
+                    .ThemeColor(ThemeColor.Success)
+                    )
             </div>
         </form>
-
     </div>
 </div>
+<br />
+<br />
+<br />
 
 <div>
-    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@Model.Employee.Id">@_localizer["BackToEditEmployee"]</a>
+    @(Html.Kendo().Button()
+        .Name("BackToEditEmployee")
+        .Content(_localizer["BackToEditEmployee"])
+        .HtmlAttributes(new { onclick = $"window.location.href='{Url.Action("Edit", "Employees", new { id = Model.EmployeeId })}'" })
+        .ThemeColor(ThemeColor.Primary)
+        )
+
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
     <script>
         $(document).ready(function () {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',  
-                autoclose: true,        
-                todayHighlight: true,  
-            });
+            kendo.culture("en-GB");
         });
     </script>
 }
