@@ -231,4 +231,7 @@
   <data name="TotalJobs" xml:space="preserve">
     <value>totali i vendeve të punës</value>
   </data>
+  <data name="Action" xml:space="preserve">
+    <value>Veprim</value>
+  </data>
 </root>

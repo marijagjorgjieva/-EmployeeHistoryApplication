@@ -4,6 +4,32 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<EmployeesController> _localizer;
 
+
+
+@{
+    var sortedModel = Model;
+    var sortOrder = ViewData["SortOrder"]?.ToString();
+
+    switch (sortOrder)
+    {
+        case "dateFrom_desc":
+            sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
+            break;
+        case "dateTo_desc":
+            sortedModel = sortedModel.OrderByDescending(j => j.dateTo).ToList();
+            break;
+        case "dateFrom":
+            sortedModel = sortedModel.OrderBy(j => j.dateFrom).ToList();
+            break;
+        case "dateTo":
+            sortedModel = sortedModel.OrderBy(j => j.dateTo).ToList();
+            break;
+        default:
+            sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
+            break;
+    }
+
+}
 <h4>@_localizer["JobHistory"]</h4>
 <table class="table">
     <thead>
@@ -35,30 +61,8 @@
         </tr>
     </thead>
     <tbody>
-        @{
-            var sortedModel = Model;
-            var sortOrder = ViewData["SortOrder"]?.ToString();
-
-            switch (sortOrder)
-            {
-                case "dateFrom_desc":
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-                    break;
-                case "dateTo_desc":
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateTo).ToList();
-                    break;
-                case "dateFrom":
-                    sortedModel = sortedModel.OrderBy(j => j.dateFrom).ToList();
-                    break;
-                case "dateTo":
-                    sortedModel = sortedModel.OrderBy(j => j.dateTo).ToList();
-                    break;
-                default:
-                    sortedModel = sortedModel.OrderByDescending(j => j.dateFrom).ToList();
-                    break;
-            }
-        }
-        @foreach (var job in sortedModel) // Sort the collection here
+     
+        @foreach (var job in sortedModel) 
         {
             <tr>
                 <td>@job.CompanyName</td>

@@ -231,4 +231,7 @@
   <data name="TotalJobs" xml:space="preserve">
     <value>вкупно работни позиции</value>
   </data>
+  <data name="Action" xml:space="preserve">
+    <value>Акција</value>
+  </data>
 </root>

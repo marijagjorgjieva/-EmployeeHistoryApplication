@@ -232,4 +232,7 @@
   <data name="TotalJobs" xml:space="preserve">
     <value />
   </data>
+  <data name="Action" xml:space="preserve">
+    <value />
+  </data>
 </root>

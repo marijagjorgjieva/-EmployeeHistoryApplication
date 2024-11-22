@@ -12,6 +12,9 @@ using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
+
 
 namespace EmployeeHistoryApplication.Controllers
 {
@@ -30,7 +33,7 @@ namespace EmployeeHistoryApplication.Controllers
 
         public async Task<IActionResult> Index(string searchString, int page = 1)
         {
-            
+
             int pageSize = 2;
             var teskt = _localizer["Asc"];
             var employeesQuery = _context.Employee.AsQueryable();
@@ -64,6 +67,22 @@ namespace EmployeeHistoryApplication.Controllers
             ViewData["DisplayedEmployees"] = employees.Count;
 
             return View(employees);
+        }
+
+        public JsonResult Grid_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            var employees = _context.Employee
+                .Select(e => new Employee
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Surname = e.Surname,
+                    Adress = e.Adress,
+                    EMBG = e.EMBG
+                })
+                .ToList();
+
+            return Json(employees.ToDataSourceResult(request));
         }
 
 
@@ -283,6 +302,18 @@ namespace EmployeeHistoryApplication.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public virtual JsonResult Grid_Destroy([DataSourceRequest] DataSourceRequest request, Employee e)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Employee.Remove(_context.Employee.Where(x=>x.Id==e.Id).FirstOrDefault());
+                _context.SaveChangesAsync();
+
+            }
+
+            return Json(new[] { e }.ToDataSourceResult(request, ModelState));
         }
 
         private bool EmployeeExists(int id)

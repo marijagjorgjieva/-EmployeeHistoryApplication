@@ -24,7 +24,7 @@
 </form> *@
 
 @*                              TODO               koga ke se klikne metodot za remove fileter tekstboxot so search string content da stane null                                         *@
-<form method="get" asp-action="Index">
+@* <form method="get" asp-action="Index">
     <div class="form-group">
         @(Html.Kendo().TextBox()
             .Name("searchString")
@@ -52,46 +52,63 @@
                 )
         </div>
     }
-</form>
+</form> *@
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @_localizer["Name"]
-            </th>
-            <th>
-                @_localizer["Surname"]
-            </th>
-            <th>
-                @_localizer["Add"]
-            </th>
-            <th>
-                @_localizer["EMBG"]
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+@(Html.Kendo().Grid<Employee>()
+    .Name("employeesGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Name).Title(@_localizer["Name"]).Width(120);
+        columns.Bound(p => p.Surname).Title(@_localizer["Surname"]).Width(120);
+        columns.Bound(p => p.Adress).Title(@_localizer["Add"]).Width(150);
+        columns.Bound(p => p.EMBG).Title(@_localizer["EMBG"]).Width(120);
+        columns.Command(command =>
         {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
-                <td>@Html.DisplayFor(modelItem => item.Adress)</td>
-                <td>@Html.DisplayFor(modelItem => item.EMBG)</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">@_localizer["EditString"]</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">@_localizer["DetailsString"]</a> |
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-id="@item.Id" data-name="@item.Name" data-surname="@item.Surname">@_localizer["DeleteString"]</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            command.Custom("Edit").Text(@_localizer["EditString"]).Click("editRecord");
+            command.Custom("Details").Text(@_localizer["DetailsString"]).Click("viewDetails");
+            command.Destroy().Text(@_localizer["DeleteString"]).HtmlAttributes(new { @class = "btn btn-danger" });
+        }).Width(250).Title(@_localizer["Action"]);
+    })
+        .ToolBar(tools => tools.Excel())
+        .Groupable()
+        .Sortable()
+        .Filterable()
+        .Pageable(pageable => pageable
+        .ButtonCount(5)
+        .Refresh(true)
+        .PageSizes(new[] { 2, 4, 26 }))
+        .Excel(excel => excel
+            .FileName("Employees List.xlsx")
+    )
+    .HtmlAttributes(new { style = "height:500px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(4)
+        .Model(model => model.Id(p => p.Id))
+        .Read(read => read.Action("Grid_Read", "Employees"))
+         .Destroy(update => update.Action("Grid_Destroy", "Employees"))
 
-<div class="pagination">
+    )
+)
+
+<script>
+    function editRecord(e) {
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = '/Employees/Edit/' + dataItem.Id;
+    }
+
+    function viewDetails(e) {
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = '/Employees/Details/' + dataItem.Id;
+    }
+        function onRequestEnd(e) {
+        console.log(e.response);
+    }
+
+</script>
+
+@* <div class="pagination">
     @if (ViewData["CurrentPage"] is int currentPage && ViewData["TotalPages"] is int totalPages)
     {
         <ul class="pagination">
@@ -121,9 +138,9 @@
     <p>
         &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp;  @_localizer["DES"] @ViewData["DisplayedEmployees"] @_localizer["FromString"] @ViewData["TotalEmployees"] @_localizer["TotalEmployeesString"]
     </p>
-</div>
-<a href="@Url.Action("ExportToExcel")" class="btn btn-secondary">@_localizer["ExportAllEmployeesText"]</a>
-
+</div> *@
+@* <a href="@Url.Action("ExportToExcel")" class="btn btn-secondary">@_localizer["ExportAllEmployeesText"]</a>
+ *@
 <!-- Modal Template -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -153,7 +170,7 @@
 </div>
 
 @* <script>
-   
+
     $('#myModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var employeeId = button.data('id'); 

@@ -231,4 +231,7 @@
   <data name="TotalJobs" xml:space="preserve">
     <value>total jobs</value>
   </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
 </root>

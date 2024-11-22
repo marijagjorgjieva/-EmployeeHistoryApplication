@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,11 @@ builder.Services.AddDbContext<EmployeeHistoryApplicationContext>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null; 
+});
 
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
